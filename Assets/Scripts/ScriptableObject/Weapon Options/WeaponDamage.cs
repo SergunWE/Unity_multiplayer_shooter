@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Weapon Options/New Weapon Damage")]
+[CreateAssetMenu(menuName = "Weapon Options/New Damage")]
 public class WeaponDamage : ScriptableObject
 {
     [SerializeField] private float baseDamage;
