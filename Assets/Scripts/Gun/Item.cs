@@ -4,12 +4,8 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
-    [SerializeField] protected ItemInfo itemInfo;
-    [SerializeField] protected GameObject itemModel;
+    //[SerializeField] private ItemInfo itemInfo;
 
     public abstract void Use();
-
-    public abstract void ShowItem();
-
-    public abstract void HideItem();
+    public abstract void AlternateUse();
 }

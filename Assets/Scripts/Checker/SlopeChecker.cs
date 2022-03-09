@@ -23,7 +23,7 @@ public class SlopeChecker : Checker, ITrackingGroundChecker
             surfaceDetectionDistance, groundMask))
         {
             float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
-            Debug.Log(angle);
+            //Debug.Log(angle);
             return angle < maxSlopeAngle && angle != 0;
         }
 

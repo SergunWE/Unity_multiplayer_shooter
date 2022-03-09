@@ -7,20 +7,23 @@ using UnityEngine.InputSystem;
 
 public class WeaponManager : MonoBehaviour
 {
-    private Item[] _items;
+    private Weapon[] _items;
     private int _currentGunIndex = 0;
 
     [SerializeField] private GameEvent onPlayerChangedGun;
 
     private void Awake()
     {
-        _items = GetComponentsInChildren<Item>();
-        Debug.Log(_items.Length);
-        //EquipItem(0);
+        _items = GetComponentsInChildren<Weapon>();
+        Debug.Log("Всего оружия " + _items.Length);
     }
 
     private void Start()
     {
+        foreach (var item in _items)
+        {
+           item.HideWeapon(); 
+        }
         EquipItem(0);
     }
 
@@ -28,10 +31,11 @@ public class WeaponManager : MonoBehaviour
     {
         if (index >= _items.Length || index < 0) return;
 
-        _items[_currentGunIndex].HideItem();
+        _items[_currentGunIndex].HideWeapon();
 
-        _items[index].ShowItem();
+        _items[index].ShowWeapon();
         _currentGunIndex = index;
+        Debug.Log("Выбрано оружие " + index, this);
         onPlayerChangedGun.Raise();
     }
 
@@ -85,10 +89,22 @@ public class WeaponManager : MonoBehaviour
         EquipItem(1);
     }
 
-    public void OnShoot(InputAction.CallbackContext context)
+    public void OnUse(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
         _items[_currentGunIndex].Use();
+    }
+    
+    public void OnAlternateUse(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        _items[_currentGunIndex].AlternateUse();
+    }
+    
+    public void OnReload(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        _items[_currentGunIndex].Reload();
     }
 
     public int CurrentGunIndex => _currentGunIndex;

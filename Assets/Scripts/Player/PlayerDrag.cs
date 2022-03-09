@@ -3,25 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDrag : MonoBehaviour
+public class PlayerDrag : MonoBehaviour, ITrackingGroundChecker
 {
     private Rigidbody _rigidbody;
 
     [SerializeField] private float groundDrag;
     private bool _isGrounded;
-    
+
     private void Awake()
     {
         _rigidbody = GetComponentInParent<Rigidbody>();
     }
 
-    public void OnPlayerOnGround()
+    #region GameEvent
+
+    public void OnPlayerGround()
     {
         _rigidbody.drag = groundDrag;
     }
 
-    public void OnPlayerOnAir()
+    public void OnPlayerAir()
     {
         _rigidbody.drag = 0;
     }
+
+    #endregion
 }

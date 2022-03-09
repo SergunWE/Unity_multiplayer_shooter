@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98f143431753e04f89590b9c4660c4a, type: 3}
-  m_Name: Classic Pistol
+  m_Script: {fileID: 11500000, guid: f15b6d68d25a10b439945c0a1021b934, type: 3}
+  m_Name: Pistol_Ncp
   m_EditorClassIdentifier: 
-  pulling: 0
-  shoot: 0
-  reload: 0
+  model: {fileID: 9000519642121710891, guid: 6c002320b9590c2478433e0a006fd554, type: 3}

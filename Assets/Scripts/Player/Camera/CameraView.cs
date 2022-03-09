@@ -42,6 +42,11 @@ public class CameraView : MonoBehaviour
     private void OnDestroy()
     {
         //Debug.Log("Destroy camera");
-        Destroy(cameraHolder.GetComponentInChildren<Camera>().gameObject);
+        Transform[] gameObjects = cameraHolder.GetComponentsInChildren<Transform>();
+        foreach (var obj in gameObjects)
+        {
+            Destroy(obj.gameObject);
+        }
+        //Destroy(cameraHolder.GetComponentInChildren<Camera>().gameObject);
     }
 }

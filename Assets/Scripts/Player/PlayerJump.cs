@@ -7,16 +7,16 @@ public class PlayerJump : MonoBehaviour, ITrackingGroundChecker
 {
     [SerializeField] private float jumpForce;
     [SerializeField] private GameEvent onPlayerJumped;
-    
+
     private bool _isGrounded = false;
-    
+
     private Rigidbody _rigidbody;
-    
+
     private void Awake()
     {
         _rigidbody = GetComponentInParent<Rigidbody>();
     }
-    
+
     private void Jump()
     {
         if (_isGrounded)
@@ -28,13 +28,20 @@ public class PlayerJump : MonoBehaviour, ITrackingGroundChecker
             _rigidbody.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
         }
     }
-    
+
+    #region InputEvent
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
         Jump();
     }
-    
+
+    #endregion
+
+
+    #region GameEvent
+
     public void OnPlayerGround()
     {
         _isGrounded = true;
@@ -44,4 +51,6 @@ public class PlayerJump : MonoBehaviour, ITrackingGroundChecker
     {
         _isGrounded = false;
     }
+
+    #endregion
 }

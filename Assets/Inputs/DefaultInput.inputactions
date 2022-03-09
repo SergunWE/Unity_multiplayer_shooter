@@ -154,7 +154,7 @@
             ]
         },
         {
-            "name": "Gun",
+            "name": "Weapon",
             "id": "e5d2e1e7-f8c7-4b09-ace3-0638fd78a7fc",
             "actions": [
                 {
@@ -185,9 +185,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Shoot",
+                    "name": "Use",
                     "type": "Button",
                     "id": "d2e6903a-e2af-49b8-adba-23e053a31828",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AlternateUse",
+                    "type": "Button",
+                    "id": "cec968ac-0f42-4ee5-b01b-7cdb1d8d3d5b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "027cfa1b-6641-441e-8d99-37ae825dd6c6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -224,7 +242,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Use",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -236,6 +254,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select first gun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a874a759-63b5-4702-bb41-7180bc50bf0e",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AlternateUse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "013ac37e-b215-44d9-a839-bba78f739af1",
+                    "path": "<Keyboard>/r",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

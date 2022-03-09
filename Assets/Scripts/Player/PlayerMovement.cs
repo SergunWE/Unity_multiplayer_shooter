@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
         }
         else
         {
-            Debug.Log("Air");
+            //Debug.Log("Air");
             _rigidbody.AddForce(_moveDirection * movementSpeedMultiplier * _movementSpeed * airMultiplier,
                 ForceMode.Acceleration);
         }
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
         {
             if (velocity.magnitude > _movementSpeed)
             {
-                Debug.Log("Снижение скорости - склон");
+                //Debug.Log("Снижение скорости - склон");
                 _rigidbody.velocity = velocity.normalized * _movementSpeed;
             }
         }
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
 
             if (flatVel.magnitude > _movementSpeed)
             {
-                Debug.Log("Снижение скорости");
+                //Debug.Log("Снижение скорости");
                 Vector3 limitedVel = flatVel.normalized * _movementSpeed;
                 _rigidbody.velocity = new Vector3(limitedVel.x, _rigidbody.velocity.y, limitedVel.z);
             }
@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
     {
         if (context.performed)
         {
-            Debug.Log("Sprint");
+            //Debug.Log("Sprint");
             _isSprinted = true;
         }
         else

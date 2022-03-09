@@ -826,7 +826,7 @@
         </member>
         <member name="M:ExitGames.Client.Photon.ParameterDictionary.ToStringFull(System.Boolean)">
             <summary>Dictionary content as string.</summary>
-            <param name="includeTypes">If true, type-info is also included.</param>
+            <param name="includeTypes">If true, type-weaponInfo is also included.</param>
             <returns>Full content of dictionary as string.</returns>
         </member>
         <member name="F:ExitGames.Client.Photon.PhotonCodes.ClientKey">
@@ -1064,7 +1064,7 @@
             <summary>Information about internal workflows, warnings and errors.</summary>
         </member>
         <member name="F:ExitGames.Client.Photon.DebugLevel.ALL">
-            <summary>Most complete workflow description (but lots of debug output), info, warnings and errors.</summary>
+            <summary>Most complete workflow description (but lots of debug output), weaponInfo, warnings and errors.</summary>
         </member>
         <member name="T:ExitGames.Client.Photon.TargetFrameworks">
             <summary>Build target framework supported by this dll.</summary>
@@ -2088,7 +2088,7 @@
             Use PhotonPeer.ReisterType() to register new types with serialization and deserialization methods.
             </summary>
             <param name="customObject">The method will get objects passed that were registered with it in RegisterType().</param>
-            <returns>Return a byte[] that resembles the object passed in. The framework will surround it with length and type info, so don't include it.</returns>
+            <returns>Return a byte[] that resembles the object passed in. The framework will surround it with length and type weaponInfo, so don't include it.</returns>
         </member>
         <member name="T:ExitGames.Client.Photon.SerializeStreamMethod">
             <summary>Serialization method delegate. StreamBuffer based custom serialization methods must use this form.</summary>

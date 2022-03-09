@@ -52,10 +52,13 @@ public class PlayerCrouch : MonoBehaviour
         {
             yield return null;
         }
+
         StopAllCoroutines();
         StartCoroutine(ChangePosition(_playerHeight,
             new Vector3(0f, _cameraHeight, 0f), onPlayerStandUp, 0.1f));
     }
+
+    #region InputEvent
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
@@ -64,7 +67,7 @@ public class PlayerCrouch : MonoBehaviour
             Debug.Log("Crouch");
             StopAllCoroutines();
             StartCoroutine(ChangePosition(_playerHeight * crouchRatio,
-                new Vector3(0f, _cameraHeight * crouchRatio, 0f), onPlayerCrouches, 
+                new Vector3(0f, _cameraHeight * crouchRatio, 0f), onPlayerCrouches,
                 0.1f));
         }
         else
@@ -73,4 +76,6 @@ public class PlayerCrouch : MonoBehaviour
             StartCoroutine(CheckOverhead());
         }
     }
+
+    #endregion
 }

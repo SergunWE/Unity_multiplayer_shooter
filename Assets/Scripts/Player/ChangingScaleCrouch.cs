@@ -6,12 +6,12 @@ public class ChangingScaleCrouch : MonoBehaviour, ITrackingCrouch
     [SerializeField] private float multiplierCrouch;
 
     private Vector3 _startScale;
-    
+
     private void Start()
     {
         _startScale = transform.localScale;
     }
-    
+
     private IEnumerator ChangeScale(Vector3 finishHeight, float animationDuration)
     {
         Vector3 startHeight = transform.localScale;
@@ -28,6 +28,8 @@ public class ChangingScaleCrouch : MonoBehaviour, ITrackingCrouch
         transform.localScale = finishHeight;
     }
 
+    #region GameEvent
+
     public void OnPlayerCrouches()
     {
         // StopAllCoroutines();
@@ -42,4 +44,6 @@ public class ChangingScaleCrouch : MonoBehaviour, ITrackingCrouch
         // StartCoroutine(ChangeScale(_startScale, 0.2f));
         transform.localScale = _startScale;
     }
+
+    #endregion
 }
