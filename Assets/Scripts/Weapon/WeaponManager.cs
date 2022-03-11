@@ -22,8 +22,9 @@ public class WeaponManager : MonoBehaviour
     {
         foreach (var item in _items)
         {
-           item.HideWeapon(); 
+            item.HideWeapon();
         }
+
         EquipItem(0);
     }
 
@@ -36,6 +37,7 @@ public class WeaponManager : MonoBehaviour
         _items[index].ShowWeapon();
         _currentGunIndex = index;
         Debug.Log("Выбрано оружие " + index, this);
+        OnAmmunitionUpdate();
         onPlayerChangedGun.Raise();
     }
 
@@ -62,6 +64,8 @@ public class WeaponManager : MonoBehaviour
             EquipItem(_currentGunIndex - 1);
         }
     }
+
+    #region InputEvent
 
     public void OnSelectScroll(InputAction.CallbackContext context)
     {
@@ -94,18 +98,30 @@ public class WeaponManager : MonoBehaviour
         if (!context.performed) return;
         _items[_currentGunIndex].Use();
     }
-    
+
     public void OnAlternateUse(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
         _items[_currentGunIndex].AlternateUse();
     }
-    
+
     public void OnReload(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
         _items[_currentGunIndex].Reload();
     }
+
+    #endregion
+
+    #region GameEvent
+
+    public void OnAmmunitionUpdate()
+    {
+        GameCanvas.Instance.UpdateAmmunition(_items[_currentGunIndex].CartridgesClip(),
+            _items[_currentGunIndex].CartridgesTotal());
+    }
+
+    #endregion
 
     public int CurrentGunIndex => _currentGunIndex;
 }

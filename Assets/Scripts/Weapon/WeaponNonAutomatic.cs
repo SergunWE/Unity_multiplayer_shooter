@@ -52,6 +52,7 @@ public class WeaponNonAutomatic : Weapon
         if (_canUse && _cartridgesClip > 0)
         {
             _cartridgesClip--;
+            AmmunitionUpdate();
             Debug.Log(_cartridgesClip + " " + _cartridgesTotal, this);
             StartCoroutine(Waiting(weaponInfo.Delays.Shoot));
         }
@@ -71,6 +72,12 @@ public class WeaponNonAutomatic : Weapon
         int cartridgesSpentReloading = Math.Min(cartridgesRequired, _cartridgesTotal);
         _cartridgesClip += cartridgesSpentReloading;
         _cartridgesTotal -= cartridgesSpentReloading;
+        AmmunitionUpdate();
+    }
+
+    private void AmmunitionUpdate()
+    {
+        weaponInfo.OnAmmunitionUpdate.Raise();
     }
 
     private IEnumerator Waiting(float delay)
@@ -89,6 +96,9 @@ public class WeaponNonAutomatic : Weapon
         _canUse = true;
     }
 
+    public override int CartridgesClip() => _cartridgesClip;
+    public override int CartridgesTotal() => _cartridgesTotal;
+
     private void OnDisable()
     {
         _canUse = false;
@@ -97,6 +107,9 @@ public class WeaponNonAutomatic : Weapon
 
     private void OnEnable()
     {
+        //Debug.Log(weaponInfo.itemName);
+        //AmmunitionUpdate();
         StartCoroutine(Waiting(weaponInfo.Delays.Pulling));
+        
     }
 }

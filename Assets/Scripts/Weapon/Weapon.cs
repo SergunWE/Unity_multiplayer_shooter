@@ -14,4 +14,6 @@ public abstract class Weapon : Item
     public abstract void Reload();
     public abstract void ShowWeapon();
     public abstract void HideWeapon();
+    public abstract int CartridgesClip();
+    public abstract int CartridgesTotal();
 }
