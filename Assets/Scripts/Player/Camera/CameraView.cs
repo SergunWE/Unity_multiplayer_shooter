@@ -35,8 +35,9 @@ public class CameraView : MonoBehaviour
         _xRotation = Mathf.Clamp(_xRotation, -89f, 89f);
 
         if(cameraHolder == null) return;
-        cameraHolder.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
+        
         orientation.rotation = Quaternion.Euler(0, _yRotation, 0);
+        cameraHolder.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
         
         _inputAxis = Vector2.zero;
     }
@@ -44,7 +45,7 @@ public class CameraView : MonoBehaviour
     
     public void OnView(InputAction.CallbackContext context)
     {
-        //if (!context.performed) return;
+        if (!context.performed) return;
         _inputAxis = context.ReadValue<Vector2>();
     }
 

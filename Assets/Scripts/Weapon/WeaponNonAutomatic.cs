@@ -7,13 +7,15 @@ public class WeaponNonAutomatic : Weapon
     private int _cartridgesClip;
     private int _cartridgesTotal;
 
+    private GameObject _weaponModel;
+
     private void Awake()
     {
         _cartridgesClip = weaponInfo.Ammunition.Clip;
         _cartridgesTotal = weaponInfo.Ammunition.Total;
-        
-        Instantiate(weaponInfo.Model.Model, transform);
-        
+
+        _weaponModel = Instantiate(weaponInfo.Model.Model, transform);
+
     }
 
     public override void Use()
@@ -31,19 +33,24 @@ public class WeaponNonAutomatic : Weapon
         if(!_canUse) return;
         if (_cartridgesClip != weaponInfo.Ammunition.Clip && _cartridgesTotal > 0)
         {
-            Debug.Log("Reload");
+            onWeaponReload.Raise();
             StartCoroutine(StartReloading());
         }
     }
 
     public override void ShowWeapon()
     {
-        gameObject.SetActive(true);
+        onWeaponPulling.Raise();
+        StartCoroutine(Waiting(weaponInfo.Delays.Pulling));
+        StartCoroutine(ChangeWeaponModel(true));
     }
     
     public override void HideWeapon()
     {
-        gameObject.SetActive(false);
+        _canUse = false;
+        StopAllCoroutines();
+        
+        StartCoroutine(ChangeWeaponModel(false));
     }
 
 
@@ -51,6 +58,7 @@ public class WeaponNonAutomatic : Weapon
     {
         if (_canUse && _cartridgesClip > 0)
         {
+            onWeaponShot.Raise();
             _cartridgesClip--;
             AmmunitionUpdate();
             Debug.Log(_cartridgesClip + " " + _cartridgesTotal, this);
@@ -77,7 +85,7 @@ public class WeaponNonAutomatic : Weapon
 
     private void AmmunitionUpdate()
     {
-        weaponInfo.OnAmmunitionUpdate.Raise();
+        onAmmunitionUpdate.Raise();
     }
 
     private IEnumerator Waiting(float delay)
@@ -85,6 +93,7 @@ public class WeaponNonAutomatic : Weapon
         _canUse = false;
         yield return new WaitForSeconds(delay);
         _canUse = true;
+        onWeaponReady.Raise();
     }
 
     private IEnumerator StartReloading()
@@ -92,24 +101,31 @@ public class WeaponNonAutomatic : Weapon
         _canUse = false;
         yield return new WaitForSeconds(weaponInfo.Delays.Reload - weaponInfo.Delays.Pulling);
         ReplaceClip();
-        yield return new WaitForSeconds(weaponInfo.Delays.Pulling);
-        _canUse = true;
+        yield return StartCoroutine(Waiting(weaponInfo.Delays.Pulling));
+        //_canUse = true;
     }
+
+    private IEnumerator ChangeWeaponModel(bool active)
+    {
+        _weaponModel.SetActive(active);
+        yield break;
+    }
+    
+    
 
     public override int CartridgesClip() => _cartridgesClip;
     public override int CartridgesTotal() => _cartridgesTotal;
 
     private void OnDisable()
     {
-        _canUse = false;
-        StopAllCoroutines();
+        
     }
 
     private void OnEnable()
     {
         //Debug.Log(weaponInfo.itemName);
         //AmmunitionUpdate();
-        StartCoroutine(Waiting(weaponInfo.Delays.Pulling));
+        
         
     }
 }

@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
     [SerializeField] private SlopeChecker slopeChecker;
     [SerializeField] private float sprintSpeedMultiplier;
     [SerializeField] private float crouchSpeedMultiplier;
-    [SerializeField] private float crouchImpulse;
 
 
     private Vector2 _inputAxis = Vector2.zero;

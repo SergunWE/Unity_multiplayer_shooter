@@ -7,62 +7,80 @@ using UnityEngine.InputSystem;
 
 public class WeaponManager : MonoBehaviour
 {
-    private Weapon[] _items;
-    private int _currentGunIndex = 0;
+    private Weapon[] _weapons;
+    private int _currentWeaponIndex = 0;
 
-    [SerializeField] private GameEvent onPlayerChangedGun;
+    [SerializeField] private GameEvent onWeaponChange;
+
+    [SerializeField] private GameEvent onWeaponPulling;
+    [SerializeField] private GameEvent onWeaponReady;
+    [SerializeField] private GameEvent onWeaponShot;
+    [SerializeField] private GameEvent onWeaponReload;
+    [SerializeField] private GameEvent onAmmunitionUpdate;
 
     private void Awake()
     {
-        _items = GetComponentsInChildren<Weapon>();
-        Debug.Log("Всего оружия " + _items.Length);
+        InitializeWeapon();
+
     }
 
     private void Start()
     {
-        foreach (var item in _items)
+        foreach (var weapon in _weapons)
         {
-            item.HideWeapon();
+            weapon.HideWeapon();
         }
 
-        EquipItem(0);
+        EquipWeapon(0);
     }
 
-    public void EquipItem(int index)
+    public void EquipWeapon(int index)
     {
-        if (index >= _items.Length || index < 0) return;
+        if (index >= _weapons.Length || index < 0) return;
 
-        _items[_currentGunIndex].HideWeapon();
+        _weapons[_currentWeaponIndex].HideWeapon();
 
-        _items[index].ShowWeapon();
-        _currentGunIndex = index;
+        _weapons[index].ShowWeapon();
+        _currentWeaponIndex = index;
         Debug.Log("Выбрано оружие " + index, this);
         OnAmmunitionUpdate();
-        onPlayerChangedGun.Raise();
+        onWeaponChange.Raise();
     }
 
-    private void NextItem()
+    private void NextWeapon()
     {
-        if (_currentGunIndex >= _items.Length - 1)
+        if (_currentWeaponIndex >= _weapons.Length - 1)
         {
-            EquipItem(0);
+            EquipWeapon(0);
         }
         else
         {
-            EquipItem(_currentGunIndex + 1);
+            EquipWeapon(_currentWeaponIndex + 1);
         }
     }
 
-    private void PreviousItem()
+    private void PreviousWeapon()
     {
-        if (_currentGunIndex <= 0)
+        if (_currentWeaponIndex <= 0)
         {
-            EquipItem(_items.Length - 1);
+            EquipWeapon(_weapons.Length - 1);
         }
         else
         {
-            EquipItem(_currentGunIndex - 1);
+            EquipWeapon(_currentWeaponIndex - 1);
         }
+    }
+
+    private void InitializeWeapon()
+    {
+        _weapons = GetComponentsInChildren<Weapon>();
+        Debug.Log("Всего оружия " + _weapons.Length);
+        if (_weapons == null) return;
+        _weapons[0].SetOnWeaponPulling(onWeaponPulling);
+        _weapons[0].SetOnWeaponReady(onWeaponReady);
+        _weapons[0].SetOnWeaponShot(onWeaponShot);
+        _weapons[0].SetOnWeaponReload(onWeaponReload);
+        _weapons[0].SetOnAmmunitionUpdate(onAmmunitionUpdate);
     }
 
     #region InputEvent
@@ -73,42 +91,42 @@ public class WeaponManager : MonoBehaviour
         int axis = (int) context.ReadValue<float>();
         if (axis > 0)
         {
-            NextItem();
+            NextWeapon();
         }
         else
         {
-            PreviousItem();
+            PreviousWeapon();
         }
     }
 
     public void OnSelectFirstGun(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        EquipItem(0);
+        EquipWeapon(0);
     }
 
     public void OnSelectSecondGun(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        EquipItem(1);
+        EquipWeapon(1);
     }
 
     public void OnUse(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        _items[_currentGunIndex].Use();
+        _weapons[_currentWeaponIndex].Use();
     }
 
     public void OnAlternateUse(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        _items[_currentGunIndex].AlternateUse();
+        _weapons[_currentWeaponIndex].AlternateUse();
     }
 
     public void OnReload(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        _items[_currentGunIndex].Reload();
+        _weapons[_currentWeaponIndex].Reload();
     }
 
     #endregion
@@ -117,11 +135,11 @@ public class WeaponManager : MonoBehaviour
 
     public void OnAmmunitionUpdate()
     {
-        GameCanvas.Instance.UpdateAmmunition(_items[_currentGunIndex].CartridgesClip(),
-            _items[_currentGunIndex].CartridgesTotal());
+        GameCanvas.Instance.UpdateAmmunition(_weapons[_currentWeaponIndex].CartridgesClip(),
+            _weapons[_currentWeaponIndex].CartridgesTotal());
     }
 
     #endregion
 
-    public int CurrentGunIndex => _currentGunIndex;
+    public int CurrentWeaponIndex => _currentWeaponIndex;
 }

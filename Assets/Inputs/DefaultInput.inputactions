@@ -16,7 +16,7 @@
                 },
                 {
                     "name": "View",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "6dbc62a8-13f8-484b-b078-3682fb3a07cf",
                     "expectedControlType": "Vector2",
                     "processors": "ScaleVector2(x=0.1,y=0.1)",
@@ -56,7 +56,7 @@
                     "name": "",
                     "id": "5f5a8042-2d55-4a64-b461-0303d9d64e4e",
                     "path": "<Mouse>/delta",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "View",
