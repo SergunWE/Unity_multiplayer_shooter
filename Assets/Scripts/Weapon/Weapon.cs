@@ -30,6 +30,7 @@ public abstract class Weapon : Item
     
     public int CartridgesClip => _cartridgesClip;
     public int CartridgesTotal => _cartridgesTotal;
+    public WeaponInfo WeaponInfo => weaponInfo;
 
     public void SetOnWeaponPulling(GameEvent gameEvent)
     {

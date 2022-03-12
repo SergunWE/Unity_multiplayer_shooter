@@ -43,8 +43,8 @@ public class WeaponManager : MonoBehaviour
 
         _weapons[index].ShowWeapon();
         _currentWeaponIndex = index;
-        //Debug.Log("Выбрано оружие " + index, this);
         OnAmmunitionUpdate();
+        WeaponNameUpdate();
         onWeaponChange.Raise();
     }
 
@@ -84,6 +84,11 @@ public class WeaponManager : MonoBehaviour
         _weapons[0].SetOnWeaponAlternateUse(onWeaponAlternateUse);
         _weapons[0].SetOnWeaponReload(onWeaponReload);
         _weapons[0].SetOnAmmunitionUpdate(onAmmunitionUpdate);
+    }
+
+    private void WeaponNameUpdate()
+    {
+        GameCanvas.Instance.UpdateWeaponName(_weapons[_currentWeaponIndex].WeaponInfo.ItemName);
     }
 
     #region InputEvent
