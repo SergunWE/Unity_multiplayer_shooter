@@ -10,12 +10,8 @@ public class WeaponInfo : ItemInfo
     [SerializeField] private WeaponAmmunition ammunition;
     [SerializeField] private WeaponModel model;
 
-    [SerializeField] private GameEvent onAmmunitionUpdate;
-    
     public WeaponDamage Damage => damage;
     public WeaponDelays Delays => delays;
     public WeaponAmmunition Ammunition => ammunition;
     public WeaponModel Model => model;
-
-    public GameEvent OnAmmunitionUpdate => onAmmunitionUpdate;
 }

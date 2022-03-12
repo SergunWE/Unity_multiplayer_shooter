@@ -121,6 +121,7 @@ Transform:
   m_Children:
   - {fileID: 7407613904150922801}
   - {fileID: 2024324417871703009}
+  - {fileID: 6381872389289923037}
   m_Father: {fileID: 3102135693211090681}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -347,9 +348,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca827067624384746878ad6969905e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smooth: 10
-  xSwayMultiplier: 2
-  ySwayMultiplier: 2
+  smooth: 15
+  xSwayMultiplier: 1
+  ySwayMultiplier: 1
+--- !u!1 &4046603699270760221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6381872389289923037}
+  - component: {fileID: 5720512232974041969}
+  m_Layer: 10
+  m_Name: Weapon3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6381872389289923037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046603699270760221}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 345354874792840634}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5720512232974041969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046603699270760221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e850a450235bbe644a47484d1dbd996f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponInfo: {fileID: 11400000, guid: 9771d3e717d125b4ab8ba3ec39a55642, type: 2}
 --- !u!1 &4530618336423480044
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,11 +1020,33 @@ MonoBehaviour:
     m_ActionId: e0409032-a0dd-4077-9fdc-2f4d49dc21c7
     m_ActionName: Player/Crouch[/Keyboard/leftCtrl]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 17950775958707986}
+        m_MethodName: OnSelectFirstGun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3f4a743f-ea91-4be4-a40d-b29873bd7253
     m_ActionName: Gun/Select first gun[/Keyboard/1]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 17950775958707986}
+        m_MethodName: OnSelectSecondGun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 33dff360-e0cd-4ef3-b4eb-fddc5d24b0af
     m_ActionName: Gun/Select second gun[/Keyboard/2]
   - m_PersistentCalls:

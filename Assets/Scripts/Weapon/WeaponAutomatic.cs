@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponNonAutomatic : Weapon
+public class WeaponAutomatic : Weapon
 {
+    private bool _isShooting;
+
+    private Coroutine _shootCoroutine;
+
     private void Awake()
     {
         _cartridgesClip = weaponInfo.Ammunition.Clip;
@@ -11,26 +16,29 @@ public class WeaponNonAutomatic : Weapon
 
         _weaponModel = Instantiate(weaponInfo.Model.Model, transform);
 
+        _isShooting = false;
     }
 
     public override void Use()
     {
-        Shoot();
+        _isShooting = true;
+        _shootCoroutine = StartCoroutine(Shoot());
     }
 
     public override void UnUse()
     {
-        
+        _isShooting = false;
+        //StopCoroutine(_shootCoroutine);
     }
-    
+
     public override void AlternateUse()
     {
         Debug.Log("AlternateUse");
     }
-    
+
     public override void Reload()
     {
-        if(!_canUse) return;
+        if (!_canUse) return;
         if (_cartridgesClip != weaponInfo.Ammunition.Clip && _cartridgesTotal > 0)
         {
             onWeaponReload.Raise();
@@ -44,34 +52,31 @@ public class WeaponNonAutomatic : Weapon
         StartCoroutine(Waiting(weaponInfo.Delays.Pulling));
         StartCoroutine(ChangeWeaponModel(true));
     }
-    
+
     public override void HideWeapon()
     {
         _canUse = false;
         StopAllCoroutines();
-        
+
         StartCoroutine(ChangeWeaponModel(false));
     }
 
 
-    private void Shoot()
+    private IEnumerator Shoot()
     {
-        if (_canUse && _cartridgesClip > 0)
+        while (_isShooting)
         {
-            onWeaponShot.Raise();
-            _cartridgesClip--;
-            AmmunitionUpdate();
-            //Debug.Log(_cartridgesClip + " " + _cartridgesTotal, this);
-            StartCoroutine(Waiting(weaponInfo.Delays.Shoot));
+            if (_canUse && _cartridgesClip > 0)
+            {
+                onWeaponShot.Raise();
+                _cartridgesClip--;
+                AmmunitionUpdate();
+                yield return StartCoroutine(Waiting(weaponInfo.Delays.Shoot));
+            }
+            
+            yield return null;
         }
-        // Debug.Log("SHOOT");
-        // if(Physics.Raycast(shotPoint.position, shotPoint.forward, out RaycastHit hit))
-        // {
-        //     Vector3 start = new Vector3(shotPoint.position.x, shotPoint.position.y, shotPoint.position.z);
-        //     Vector3 finish = new Vector3(hit.point.x,hit.point.y,hit.point.z);
-        //     Debug.DrawLine(start, finish, Color.green, 100f, true);
-        //     hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((WeaponInfo)itemInfo).Damage);
-        // }
+        
     }
 
     private void ReplaceClip()
@@ -109,17 +114,5 @@ public class WeaponNonAutomatic : Weapon
     {
         _weaponModel.SetActive(active);
         yield break;
-    }
-    private void OnDisable()
-    {
-        
-    }
-
-    private void OnEnable()
-    {
-        //Debug.Log(weaponInfo.itemName);
-        //AmmunitionUpdate();
-        
-        
     }
 }

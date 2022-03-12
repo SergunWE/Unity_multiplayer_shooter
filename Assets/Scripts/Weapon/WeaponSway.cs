@@ -21,13 +21,13 @@ public class WeaponSway : MonoBehaviour
 
         _targetRotation = _xRotation * _yRotation;
         
-        transform.localRotation = Quaternion.Slerp
+        transform.localRotation = Quaternion.Lerp
             (transform.localRotation, _targetRotation, smooth * Time.deltaTime);
     }
     
     public void OnView(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
+        //if (!context.performed) return;
         _inputAxis = context.ReadValue<Vector2>();
     }
 }

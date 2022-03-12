@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79da1aa6988f89c479e367010a1ac3f2, type: 3}
-  m_Name: Pistol_Revolver
+  m_Script: {fileID: 11500000, guid: f15b6d68d25a10b439945c0a1021b934, type: 3}
+  m_Name: AssaultRifle_AK47
   m_EditorClassIdentifier: 
-  baseDamage: 40
-  distanceDamageCoefficient: 0.6
-  startInterval: 20
-  endInterval: 110
-  numberBullets: 1
+  model: {fileID: 3690505412905671172, guid: 8e52c97907e2ad04499eb1f8aaffa8d6, type: 3}

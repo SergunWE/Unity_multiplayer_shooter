@@ -34,7 +34,7 @@ public class WeaponManager : MonoBehaviour
         EquipWeapon(0);
     }
 
-    public void EquipWeapon(int index)
+    private void EquipWeapon(int index)
     {
         if (index >= _weapons.Length || index < 0) return;
 
@@ -42,7 +42,7 @@ public class WeaponManager : MonoBehaviour
 
         _weapons[index].ShowWeapon();
         _currentWeaponIndex = index;
-        Debug.Log("Выбрано оружие " + index, this);
+        //Debug.Log("Выбрано оружие " + index, this);
         OnAmmunitionUpdate();
         onWeaponChange.Raise();
     }
@@ -75,6 +75,7 @@ public class WeaponManager : MonoBehaviour
     {
         _weapons = GetComponentsInChildren<Weapon>();
         Debug.Log("Всего оружия " + _weapons.Length);
+        
         if (_weapons == null) return;
         _weapons[0].SetOnWeaponPulling(onWeaponPulling);
         _weapons[0].SetOnWeaponReady(onWeaponReady);
@@ -113,8 +114,18 @@ public class WeaponManager : MonoBehaviour
 
     public void OnUse(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
-        _weapons[_currentWeaponIndex].Use();
+        if (context.performed)
+        {
+            _weapons[_currentWeaponIndex].Use();
+        }
+        else
+        {
+            if (context.canceled)
+            {
+                _weapons[_currentWeaponIndex].UnUse();
+            }
+        }
+        
     }
 
     public void OnAlternateUse(InputAction.CallbackContext context)
@@ -135,8 +146,8 @@ public class WeaponManager : MonoBehaviour
 
     public void OnAmmunitionUpdate()
     {
-        GameCanvas.Instance.UpdateAmmunition(_weapons[_currentWeaponIndex].CartridgesClip(),
-            _weapons[_currentWeaponIndex].CartridgesTotal());
+        GameCanvas.Instance.UpdateAmmunition(_weapons[_currentWeaponIndex].CartridgesClip,
+            _weapons[_currentWeaponIndex].CartridgesTotal);
     }
 
     #endregion

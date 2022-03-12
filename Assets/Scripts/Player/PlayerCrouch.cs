@@ -64,7 +64,7 @@ public class PlayerCrouch : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("Crouch");
+            //Debug.Log("Crouch");
             StopAllCoroutines();
             StartCoroutine(ChangePosition(_playerHeight * crouchRatio,
                 new Vector3(0f, _cameraHeight * crouchRatio, 0f), onPlayerCrouches,

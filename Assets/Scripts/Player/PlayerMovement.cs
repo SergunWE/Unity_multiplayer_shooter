@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
 
         if (!_exitingSlope && _isSloped)
         {
-            Debug.Log("Slope");
+            //Debug.Log("Slope");
             _rigidbody.AddForce(slopeChecker.GetSlopeMoveDirection(_moveDirection) *
                                 _movementSpeed * movementSpeedMultiplier, ForceMode.Force);
         }

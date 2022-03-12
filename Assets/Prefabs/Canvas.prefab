@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1805364684776427774}
   - component: {fileID: 5033958409568665425}
   - component: {fileID: 41897111291425580}
+  - component: {fileID: 6929402808290947467}
   m_Layer: 5
   m_Name: UIEventListener
   m_TagString: Untagged
@@ -117,6 +118,33 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Reload
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6929402808290947467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237119079521930888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64df300bec165274fb113cb36fcd7e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 2eebc2550afe782448633e42a79e608e, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 687399110382118725}
+        m_MethodName: SetLabel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Shot
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &856273508641696501
