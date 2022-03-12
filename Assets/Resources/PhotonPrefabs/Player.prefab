@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &287835125200016007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4464955383199027641}
+  - component: {fileID: 4818639495173746539}
+  m_Layer: 10
+  m_Name: Weapon4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4464955383199027641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287835125200016007}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 345354874792840634}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4818639495173746539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287835125200016007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae83b02d77f8c3f49ba52f775796cdde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponInfo: {fileID: 11400000, guid: f0ff654f3f7581b4fa8d22adcba37aee, type: 2}
 --- !u!1 &891622047867981773
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,6 +166,7 @@ Transform:
   - {fileID: 7407613904150922801}
   - {fileID: 2024324417871703009}
   - {fileID: 6381872389289923037}
+  - {fileID: 4464955383199027641}
   m_Father: {fileID: 3102135693211090681}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -269,7 +314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2024324417871703009}
-  - component: {fileID: 7961727265844919627}
+  - component: {fileID: 1101231906433705907}
   m_Layer: 10
   m_Name: Weapon2
   m_TagString: Untagged
@@ -291,7 +336,7 @@ Transform:
   m_Father: {fileID: 345354874792840634}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7961727265844919627
+--- !u!114 &1101231906433705907
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,10 +345,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2575161666417892246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a753045d6a23c24a80ba3de77b3eb34, type: 3}
+  m_Script: {fileID: 11500000, guid: f186df1f066b739479a918501e0ed2e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInfo: {fileID: 11400000, guid: 2548c134847c8d547b98e0297661f477, type: 2}
+  weaponInfo: {fileID: 11400000, guid: 5b582a4f79606e149ac776f2af0c3ddd, type: 2}
 --- !u!1 &3885025152362280174
 GameObject:
   m_ObjectHideFlags: 0

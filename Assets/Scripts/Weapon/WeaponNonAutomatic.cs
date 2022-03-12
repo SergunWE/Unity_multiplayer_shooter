@@ -4,23 +4,35 @@ using UnityEngine;
 
 public class WeaponNonAutomatic : Weapon
 {
+    private bool _isPulling;
+    protected bool _isPressed;
+    
+    protected Coroutine _startReloadingCoroutine;
+    protected Coroutine _waitingCoroutine;
+    protected Coroutine _changeWeaponModelCoroutine;
+
+    private void Update()
+    {
+        Debug.Log(_startReloadingCoroutine);
+    }
+
     private void Awake()
     {
         _cartridgesClip = weaponInfo.Ammunition.Clip;
         _cartridgesTotal = weaponInfo.Ammunition.Total;
 
         _weaponModel = Instantiate(weaponInfo.Model.Model, transform);
-
     }
 
     public override void Use()
     {
+        _isPressed = true;
         Shoot();
     }
 
     public override void UnUse()
     {
-        
+        _isPressed = false;
     }
     
     public override void AlternateUse()
@@ -30,40 +42,46 @@ public class WeaponNonAutomatic : Weapon
     
     public override void Reload()
     {
-        if(!_canUse) return;
+        if(_isPulling) return;
         if (_cartridgesClip != weaponInfo.Ammunition.Clip && _cartridgesTotal > 0)
         {
             onWeaponReload.Raise();
-            StartCoroutine(StartReloading());
+            if (_startReloadingCoroutine == null)
+            {
+                StartReloading();
+            }
         }
     }
 
     public override void ShowWeapon()
     {
         onWeaponPulling.Raise();
-        StartCoroutine(Waiting(weaponInfo.Delays.Pulling));
-        StartCoroutine(ChangeWeaponModel(true));
+        Waiting(weaponInfo.Delays.Pulling);
+        _isPulling = true;
+        ChangeWeaponModel(true);
     }
     
     public override void HideWeapon()
     {
         _canUse = false;
-        StopAllCoroutines();
+        ChangeWeaponModel(false);
         
-        StartCoroutine(ChangeWeaponModel(false));
+        StopAllCoroutines();
+        _startReloadingCoroutine = null;
+        _waitingCoroutine = null;
+        _changeWeaponModelCoroutine = null;
     }
 
 
-    private void Shoot()
+    protected virtual void Shoot()
     {
-        if (_canUse && _cartridgesClip > 0)
-        {
-            onWeaponShot.Raise();
-            _cartridgesClip--;
-            AmmunitionUpdate();
-            //Debug.Log(_cartridgesClip + " " + _cartridgesTotal, this);
-            StartCoroutine(Waiting(weaponInfo.Delays.Shoot));
-        }
+        if (!_canUse || _cartridgesClip <= 0) return;
+        onWeaponShot.Raise();
+        _cartridgesClip--;
+        AmmunitionUpdate();
+        Waiting(weaponInfo.Delays.Shoot);
+        //StartCoroutine(WaitingCoroutine(weaponInfo.Delays.Shoot));
+        
         // Debug.Log("SHOOT");
         // if(Physics.Raycast(shotPoint.position, shotPoint.forward, out RaycastHit hit))
         // {
@@ -74,7 +92,7 @@ public class WeaponNonAutomatic : Weapon
         // }
     }
 
-    private void ReplaceClip()
+    protected virtual void ReplaceClip()
     {
         int cartridgesRequired = weaponInfo.Ammunition.Clip - _cartridgesClip;
         int cartridgesSpentReloading = Math.Min(cartridgesRequired, _cartridgesTotal);
@@ -83,43 +101,63 @@ public class WeaponNonAutomatic : Weapon
         AmmunitionUpdate();
     }
 
-    private void AmmunitionUpdate()
+    protected void AmmunitionUpdate()
     {
         onAmmunitionUpdate.Raise();
     }
 
-    private IEnumerator Waiting(float delay)
+    private void Waiting(float delay)
+    {
+        if (_waitingCoroutine == null)
+        {
+            _waitingCoroutine = StartCoroutine(WaitingCoroutine(delay));
+        }
+    }
+
+    private void StartReloading()
+    {
+        if (_startReloadingCoroutine == null)
+        {
+            _startReloadingCoroutine = StartCoroutine(StartReloadingCoroutine());
+        }
+    }
+
+    private void ChangeWeaponModel(bool active)
+    {
+        if (_changeWeaponModelCoroutine == null)
+        {
+            _changeWeaponModelCoroutine = StartCoroutine(ChangeWeaponModelCoroutine(active));
+        }
+    }
+
+    protected virtual IEnumerator WaitingCoroutine(float delay)
     {
         _canUse = false;
         yield return new WaitForSeconds(delay);
         _canUse = true;
+        _isPulling = false;
         onWeaponReady.Raise();
+        _waitingCoroutine = null;
     }
 
-    private IEnumerator StartReloading()
+    protected virtual IEnumerator StartReloadingCoroutine()
     {
+        if (_waitingCoroutine != null)
+        {
+            StopCoroutine(_waitingCoroutine);
+            _waitingCoroutine = null;
+        }
+        
         _canUse = false;
         yield return new WaitForSeconds(weaponInfo.Delays.Reload - weaponInfo.Delays.Pulling);
         ReplaceClip();
-        yield return StartCoroutine(Waiting(weaponInfo.Delays.Pulling));
-        //_canUse = true;
+        yield return StartCoroutine(WaitingCoroutine(weaponInfo.Delays.Pulling));
+        _startReloadingCoroutine = null;
     }
 
-    private IEnumerator ChangeWeaponModel(bool active)
+    private IEnumerator ChangeWeaponModelCoroutine(bool active)
     {
         _weaponModel.SetActive(active);
         yield break;
-    }
-    private void OnDisable()
-    {
-        
-    }
-
-    private void OnEnable()
-    {
-        //Debug.Log(weaponInfo.itemName);
-        //AmmunitionUpdate();
-        
-        
     }
 }
