@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fafa2f5f011d048bda1468d6d35cfe, type: 3}
   m_Name: Pistol_Revolver
   m_EditorClassIdentifier: 
-  itemName: Pistol_Revolver
+  itemName: Revolver
   damage: {fileID: 11400000, guid: a21f996c86d89de41a1e5e1f15b191c9, type: 2}
   delays: {fileID: 11400000, guid: fffcc68b7b480b042b781a54e4337a7a, type: 2}
   ammunition: {fileID: 11400000, guid: 7b5df9df68a374246b3314283f46759a, type: 2}
   model: {fileID: 11400000, guid: 78823a7c469cf1d4284e9f7880d775e3, type: 2}
-  onAmmunitionUpdate: {fileID: 11400000, guid: 249443c8d2503064f8b14ccdffde3564, type: 2}
