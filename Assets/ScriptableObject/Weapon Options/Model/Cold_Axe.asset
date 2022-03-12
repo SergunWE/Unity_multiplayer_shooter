@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15b6d68d25a10b439945c0a1021b934, type: 3}
   m_Name: Cold_Axe
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
+  model: {fileID: 6650022262087724030, guid: 3e41981509dc17140bf6ffcdc876e046, type: 3}

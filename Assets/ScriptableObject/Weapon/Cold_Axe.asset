@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fafa2f5f011d048bda1468d6d35cfe, type: 3}
   m_Name: Cold_Axe
   m_EditorClassIdentifier: 
-  itemName: 
-  damage: {fileID: 0}
-  delays: {fileID: 0}
+  itemName: Axe
+  damage: {fileID: 11400000, guid: 9fbd657b1fca0b045af4126b03f7b663, type: 2}
+  delays: {fileID: 11400000, guid: 791f99bccb64c354a9edc4453b641c6e, type: 2}
   ammunition: {fileID: 0}
-  model: {fileID: 0}
+  model: {fileID: 11400000, guid: 898543edb338217468553bcece6762aa, type: 2}

@@ -8,17 +8,13 @@ using UnityEngine.InputSystem;
 public class PhotonController : MonoBehaviour
 {
     [SerializeField] private GameObject playerOnlineDisplay;
-    
+    [SerializeField] private GameObject playerOnlineWeaponDisplay;
+
     [SerializeField] private Rigidbody playerRigidbody;
-    [SerializeField] private CapsuleCollider playerCapsuleCollider;
-    [SerializeField] private PlayerInput playerInput;
-    [SerializeField] private GameEventListener gameEventListener;
+    [SerializeField] private CapsuleCollider playerCollider;
 
-    [SerializeField] private GameObject[] playerComponents;
-    
     private PhotonView _photonView;
-
-
+    
     private void Awake()
     {
         _photonView = GetComponentInParent<PhotonView>();
@@ -30,23 +26,25 @@ public class PhotonController : MonoBehaviour
             {
                 Destroy(model.gameObject);
             }
+            Destroy(playerOnlineWeaponDisplay);
         }
         else
         {
-            Destroy(gameEventListener.gameObject);
             Destroy(playerRigidbody);
-            Destroy(playerCapsuleCollider);
-            Destroy(playerInput.gameObject);
-            
-            foreach (var component in playerComponents)
-            {
-                Destroy(component);
-            }
-            
+            Destroy(playerCollider);
+            DeleteLocalComponents(transform.parent.gameObject);
         }
     }
 
-    private void Start()
+    private void DeleteLocalComponents(GameObject component)
     {
+        Transform[] components = component.GetComponentsInChildren<Transform>();
+        foreach (var obj in components)
+        {
+            if (!obj.TryGetComponent(out OnlineComponent onlineComponent))
+            {
+                Destroy(obj.gameObject);
+            }
+        }
     }
 }
