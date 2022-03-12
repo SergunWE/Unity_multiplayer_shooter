@@ -14,7 +14,8 @@ public class WeaponManager : MonoBehaviour
 
     [SerializeField] private GameEvent onWeaponPulling;
     [SerializeField] private GameEvent onWeaponReady;
-    [SerializeField] private GameEvent onWeaponShot;
+    [SerializeField] private GameEvent onWeaponUse;
+    [SerializeField] private GameEvent onWeaponAlternateUse;
     [SerializeField] private GameEvent onWeaponReload;
     [SerializeField] private GameEvent onAmmunitionUpdate;
 
@@ -79,7 +80,8 @@ public class WeaponManager : MonoBehaviour
         if (_weapons == null) return;
         _weapons[0].SetOnWeaponPulling(onWeaponPulling);
         _weapons[0].SetOnWeaponReady(onWeaponReady);
-        _weapons[0].SetOnWeaponShot(onWeaponShot);
+        _weapons[0].SetOnWeaponUse(onWeaponUse);
+        _weapons[0].SetOnWeaponAlternateUse(onWeaponAlternateUse);
         _weapons[0].SetOnWeaponReload(onWeaponReload);
         _weapons[0].SetOnAmmunitionUpdate(onAmmunitionUpdate);
     }

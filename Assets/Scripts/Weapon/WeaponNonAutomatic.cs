@@ -11,11 +11,6 @@ public class WeaponNonAutomatic : Weapon
     protected Coroutine _waitingCoroutine;
     protected Coroutine _changeWeaponModelCoroutine;
 
-    private void Update()
-    {
-        Debug.Log(_startReloadingCoroutine);
-    }
-
     private void Awake()
     {
         _cartridgesClip = weaponInfo.Ammunition.Clip;
@@ -35,10 +30,10 @@ public class WeaponNonAutomatic : Weapon
         _isPressed = false;
     }
     
-    public override void AlternateUse()
-    {
-        Debug.Log("AlternateUse");
-    }
+    // public override void AlternateUse()
+    // {
+    //     Debug.Log("AlternateUse");
+    // }
     
     public override void Reload()
     {
@@ -76,7 +71,7 @@ public class WeaponNonAutomatic : Weapon
     protected virtual void Shoot()
     {
         if (!_canUse || _cartridgesClip <= 0) return;
-        onWeaponShot.Raise();
+        onWeaponUse.Raise();
         _cartridgesClip--;
         AmmunitionUpdate();
         Waiting(weaponInfo.Delays.Shoot);
@@ -130,7 +125,7 @@ public class WeaponNonAutomatic : Weapon
         }
     }
 
-    protected virtual IEnumerator WaitingCoroutine(float delay)
+    private IEnumerator WaitingCoroutine(float delay)
     {
         _canUse = false;
         yield return new WaitForSeconds(delay);

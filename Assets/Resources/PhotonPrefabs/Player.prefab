@@ -167,6 +167,7 @@ Transform:
   - {fileID: 2024324417871703009}
   - {fileID: 6381872389289923037}
   - {fileID: 4464955383199027641}
+  - {fileID: 6445019762036111892}
   m_Father: {fileID: 3102135693211090681}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -185,7 +186,9 @@ MonoBehaviour:
   onWeaponChange: {fileID: 11400000, guid: 71660256e190e54439b7517f9e53a682, type: 2}
   onWeaponPulling: {fileID: 11400000, guid: 36119f5e8fd2540419122eace33584d1, type: 2}
   onWeaponReady: {fileID: 11400000, guid: 9a1fd1618633a2345a7b9a617bc1da1b, type: 2}
-  onWeaponShot: {fileID: 11400000, guid: 2eebc2550afe782448633e42a79e608e, type: 2}
+  onWeaponUse: {fileID: 11400000, guid: 2eebc2550afe782448633e42a79e608e, type: 2}
+  onWeaponAlternateUse: {fileID: 11400000, guid: 451588bf920ff564ea2c0e9977eeaf1f,
+    type: 2}
   onWeaponReload: {fileID: 11400000, guid: 34ad056512ce45d4fbd3f9d7e1a0b95a, type: 2}
   onAmmunitionUpdate: {fileID: 11400000, guid: 249443c8d2503064f8b14ccdffde3564, type: 2}
 --- !u!1 &1508939883391956193
@@ -1922,6 +1925,50 @@ MonoBehaviour:
   layerCheck:
     serializedVersion: 2
     m_Bits: 311
+--- !u!1 &7956270256089897832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6445019762036111892}
+  - component: {fileID: 53509451040257512}
+  m_Layer: 10
+  m_Name: Weapon5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6445019762036111892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956270256089897832}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 345354874792840634}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &53509451040257512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956270256089897832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c66572268a93a4d8917e66c657d6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponInfo: {fileID: 11400000, guid: f403035b1f74a394380aeb7751b7842d, type: 2}
 --- !u!1 &8270672457877769053
 GameObject:
   m_ObjectHideFlags: 0

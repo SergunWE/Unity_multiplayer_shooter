@@ -9,6 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00bc615811c02c04b8c9bd268dd0eacf, type: 3}
-  m_Name: OnWeaponShot
+  m_Script: {fileID: 11500000, guid: e6fafa2f5f011d048bda1468d6d35cfe, type: 3}
+  m_Name: Cold_Axe
   m_EditorClassIdentifier: 
+  itemName: 
+  damage: {fileID: 0}
+  delays: {fileID: 0}
+  ammunition: {fileID: 0}
+  model: {fileID: 0}

@@ -11,7 +11,8 @@ public abstract class Weapon : Item
 
     protected static GameEvent onWeaponPulling;
     protected static GameEvent onWeaponReady;
-    protected static GameEvent onWeaponShot;
+    protected static GameEvent onWeaponUse;
+    protected static GameEvent onWeaponAlternateUse;
     protected static GameEvent onWeaponReload;
     protected static GameEvent onAmmunitionUpdate;
     
@@ -21,11 +22,12 @@ public abstract class Weapon : Item
     protected GameObject _weaponModel;
 
     public abstract override void Use();
-    public abstract void UnUse();
-    public abstract override void AlternateUse();
-    public abstract void Reload();
+    public override void AlternateUse() {}
     public abstract void ShowWeapon();
     public abstract void HideWeapon();
+    public virtual void UnUse() {}
+    public virtual void Reload() {}
+    
     public int CartridgesClip => _cartridgesClip;
     public int CartridgesTotal => _cartridgesTotal;
 
@@ -34,9 +36,14 @@ public abstract class Weapon : Item
         onWeaponPulling = gameEvent;
     }
     
-    public void SetOnWeaponShot(GameEvent gameEvent)
+    public void SetOnWeaponUse(GameEvent gameEvent)
     {
-        onWeaponShot = gameEvent;
+        onWeaponUse = gameEvent;
+    }
+    
+    public void SetOnWeaponAlternateUse(GameEvent gameEvent)
+    {
+        onWeaponAlternateUse = gameEvent;
     }
     
     public void SetOnWeaponReload(GameEvent gameEvent)

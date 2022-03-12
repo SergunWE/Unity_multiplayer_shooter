@@ -24,6 +24,7 @@ public class WeaponShotgun : WeaponNonAutomatic
             yield return null;
         }
         _startReloadingCoroutine = null;
+        onWeaponReady.Raise();
     }
     
     protected override void Shoot()
