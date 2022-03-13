@@ -10,8 +10,9 @@ public class WeaponManager : MonoBehaviour
     private Weapon[] _weapons;
     private int _currentWeaponIndex = 0;
 
-    [SerializeField] private GameEvent onWeaponChange;
+    [SerializeField] private GameObject weaponsParent;
 
+    [SerializeField] private GameEvent onWeaponChange;
     [SerializeField] private GameEvent onWeaponPulling;
     [SerializeField] private GameEvent onWeaponReady;
     [SerializeField] private GameEvent onWeaponUse;
@@ -22,7 +23,6 @@ public class WeaponManager : MonoBehaviour
     private void Awake()
     {
         InitializeWeapon();
-
     }
 
     private void Start()
@@ -40,9 +40,9 @@ public class WeaponManager : MonoBehaviour
         if (index >= _weapons.Length || index < 0) return;
 
         _weapons[_currentWeaponIndex].HideWeapon();
-
-        _weapons[index].ShowWeapon();
         _currentWeaponIndex = index;
+        _weapons[index].ShowWeapon();
+        
         OnAmmunitionUpdate();
         WeaponNameUpdate();
         onWeaponChange.Raise();
@@ -74,7 +74,7 @@ public class WeaponManager : MonoBehaviour
 
     private void InitializeWeapon()
     {
-        _weapons = GetComponentsInChildren<Weapon>();
+        _weapons = weaponsParent.GetComponentsInChildren<Weapon>();
         Debug.Log("Всего оружия " + _weapons.Length);
         
         if (_weapons == null) return;
@@ -159,5 +159,5 @@ public class WeaponManager : MonoBehaviour
 
     #endregion
 
-    public int CurrentWeaponIndex => _currentWeaponIndex;
+    public WeaponInfo CurrentWeapon => _weapons[_currentWeaponIndex].WeaponInfo;
 }

@@ -144,7 +144,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 345354874792840634}
-  - component: {fileID: 17950775958707986}
   m_Layer: 10
   m_Name: FirstPersonWeapon
   m_TagString: Untagged
@@ -171,26 +170,6 @@ Transform:
   m_Father: {fileID: 3102135693211090681}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &17950775958707986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471127564306454178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e578ec1aa8640a846bc4c2d66e1ab952, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onWeaponChange: {fileID: 11400000, guid: 71660256e190e54439b7517f9e53a682, type: 2}
-  onWeaponPulling: {fileID: 11400000, guid: 36119f5e8fd2540419122eace33584d1, type: 2}
-  onWeaponReady: {fileID: 11400000, guid: 9a1fd1618633a2345a7b9a617bc1da1b, type: 2}
-  onWeaponUse: {fileID: 11400000, guid: 2eebc2550afe782448633e42a79e608e, type: 2}
-  onWeaponAlternateUse: {fileID: 11400000, guid: 451588bf920ff564ea2c0e9977eeaf1f,
-    type: 2}
-  onWeaponReload: {fileID: 11400000, guid: 34ad056512ce45d4fbd3f9d7e1a0b95a, type: 2}
-  onAmmunitionUpdate: {fileID: 11400000, guid: 249443c8d2503064f8b14ccdffde3564, type: 2}
 --- !u!1 &1508939883391956193
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +300,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponInfo: {fileID: 11400000, guid: 2256b9f2b573f8e45a82e7cfaf777b9b, type: 2}
+--- !u!1 &2280126850898502732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2464780033851476245}
+  - component: {fileID: 1517926037181110809}
+  m_Layer: 0
+  m_Name: WeaponShotCalculation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2464780033851476245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280126850898502732}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6862892531349503149}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1517926037181110809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280126850898502732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 459e6cdc3f01c1649b7e1f6021c2dc62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponManager: {fileID: 3877433160112221364}
+  shotPoint: {fileID: 6862892531029742901}
+  layerOnlinePlayers:
+    serializedVersion: 2
+    m_Bits: 4608
+  inspectionRadius: 0.3
 --- !u!1 &2575161666417892246
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7489999049632917730
 Transform:
   m_ObjectHideFlags: 0
@@ -634,6 +662,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3b65a844c68df42b0b7b8a57cd72dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4565644049379428904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1225392557630658654}
+  - component: {fileID: 3877433160112221364}
+  m_Layer: 0
+  m_Name: WeaponManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1225392557630658654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565644049379428904}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6862892531349503149}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3877433160112221364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565644049379428904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e578ec1aa8640a846bc4c2d66e1ab952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponsParent: {fileID: 1471127564306454178}
+  onWeaponChange: {fileID: 11400000, guid: 71660256e190e54439b7517f9e53a682, type: 2}
+  onWeaponPulling: {fileID: 11400000, guid: 36119f5e8fd2540419122eace33584d1, type: 2}
+  onWeaponReady: {fileID: 11400000, guid: 9a1fd1618633a2345a7b9a617bc1da1b, type: 2}
+  onWeaponUse: {fileID: 11400000, guid: 2eebc2550afe782448633e42a79e608e, type: 2}
+  onWeaponAlternateUse: {fileID: 11400000, guid: 451588bf920ff564ea2c0e9977eeaf1f,
+    type: 2}
+  onWeaponReload: {fileID: 11400000, guid: 34ad056512ce45d4fbd3f9d7e1a0b95a, type: 2}
+  onAmmunitionUpdate: {fileID: 11400000, guid: 249443c8d2503064f8b14ccdffde3564, type: 2}
 --- !u!1 &4730742999467326086
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +727,7 @@ GameObject:
   - component: {fileID: 4306780008248554648}
   - component: {fileID: 2721834140793662380}
   - component: {fileID: 1159639223902460374}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +876,7 @@ GameObject:
   - component: {fileID: 8653679418985068465}
   - component: {fileID: 576404338758212993}
   - component: {fileID: 8343937107536984276}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OnlinePlayerDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1147,7 +1227,7 @@ MonoBehaviour:
     m_ActionName: Player/Crouch[/Keyboard/leftCtrl]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 17950775958707986}
+      - m_Target: {fileID: 3877433160112221364}
         m_MethodName: OnSelectFirstGun
         m_Mode: 0
         m_Arguments:
@@ -1162,7 +1242,7 @@ MonoBehaviour:
     m_ActionName: Gun/Select first gun[/Keyboard/1]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 17950775958707986}
+      - m_Target: {fileID: 3877433160112221364}
         m_MethodName: OnSelectSecondGun
         m_Mode: 0
         m_Arguments:
@@ -1177,7 +1257,7 @@ MonoBehaviour:
     m_ActionName: Gun/Select second gun[/Keyboard/2]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 17950775958707986}
+      - m_Target: {fileID: 3877433160112221364}
         m_MethodName: OnSelectScroll
         m_Mode: 0
         m_Arguments:
@@ -1192,7 +1272,7 @@ MonoBehaviour:
     m_ActionName: Gun/Select gun with scroll[/Mouse/scroll/y]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 17950775958707986}
+      - m_Target: {fileID: 3877433160112221364}
         m_MethodName: OnUse
         m_Mode: 0
         m_Arguments:
@@ -1207,7 +1287,7 @@ MonoBehaviour:
     m_ActionName: Gun/Shoot[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 17950775958707986}
+      - m_Target: {fileID: 3877433160112221364}
         m_MethodName: OnAlternateUse
         m_Mode: 0
         m_Arguments:
@@ -1222,7 +1302,7 @@ MonoBehaviour:
     m_ActionName: Gun/AlternateUse[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 17950775958707986}
+      - m_Target: {fileID: 3877433160112221364}
         m_MethodName: OnReload
         m_Mode: 0
         m_Arguments:
@@ -1315,7 +1395,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 823
+    m_Bits: 4919
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1365,7 +1445,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6862892531349503149}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8920342585261956121
 MonoBehaviour:
@@ -1842,6 +1922,8 @@ Transform:
   - {fileID: 6862892531029742901}
   - {fileID: 6862892530478573842}
   - {fileID: 4765426242868806850}
+  - {fileID: 1225392557630658654}
+  - {fileID: 2464780033851476245}
   - {fileID: 6862892530109670527}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2089,7 +2171,7 @@ GameObject:
   - component: {fileID: 6598132825175366909}
   m_Layer: 0
   m_Name: ThirdPersonWeapon
-  m_TagString: OnlineComponent
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2204,7 +2286,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8277048962233457631}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 3
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -2300,6 +2382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4765426242868806850}
   - component: {fileID: 6627516536598894567}
+  - component: {fileID: 1934214059709830856}
   m_Layer: 0
   m_Name: WeaponEventListener
   m_TagString: Untagged
@@ -2337,8 +2420,35 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 17950775958707986}
+      - m_Target: {fileID: 3877433160112221364}
         m_MethodName: OnAmmunitionUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1934214059709830856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814173412802611817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64df300bec165274fb113cb36fcd7e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 2eebc2550afe782448633e42a79e608e, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1517926037181110809}
+        m_MethodName: OnWeaponUse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2361,7 +2471,7 @@ GameObject:
   - component: {fileID: 3008528558244387497}
   - component: {fileID: 7376716150869915118}
   - component: {fileID: 4215445535463251654}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

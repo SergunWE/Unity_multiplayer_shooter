@@ -16,4 +16,4 @@ MonoBehaviour:
   distanceDamageCoefficient: 0.3
   startInterval: 5
   endInterval: 30
-  numberBullets: 9
+  numberBullets: 15

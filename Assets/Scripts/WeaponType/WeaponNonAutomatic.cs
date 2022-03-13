@@ -77,14 +77,7 @@ public class WeaponNonAutomatic : Weapon
         Waiting(weaponInfo.Delays.Shoot);
         //StartCoroutine(WaitingCoroutine(weaponInfo.Delays.Shoot));
         
-        // Debug.Log("SHOOT");
-        // if(Physics.Raycast(shotPoint.position, shotPoint.forward, out RaycastHit hit))
-        // {
-        //     Vector3 start = new Vector3(shotPoint.position.x, shotPoint.position.y, shotPoint.position.z);
-        //     Vector3 finish = new Vector3(hit.point.x,hit.point.y,hit.point.z);
-        //     Debug.DrawLine(start, finish, Color.green, 100f, true);
-        //     hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((WeaponInfo)itemInfo).Damage);
-        // }
+        
     }
 
     protected virtual void ReplaceClip()

@@ -16,7 +16,6 @@ public class WeaponCold : Weapon
         if (_canUse)
         {
             onWeaponUse.Raise();
-            Debug.Log("Use Weapon Cold");
             Waiting(weaponInfo.Delays.Shoot);
         }
     }
@@ -26,7 +25,6 @@ public class WeaponCold : Weapon
         if (_canUse)
         {
             onWeaponAlternateUse.Raise();
-            Debug.Log("Alternate Use Weapon Cold");
             //для задержки альтаернативного использования используем значения перезарядки
             Waiting(weaponInfo.Delays.Reload);
         }
