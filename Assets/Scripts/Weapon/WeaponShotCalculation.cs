@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WeaponShotCalculation : MonoBehaviour
 {
@@ -12,25 +12,30 @@ public class WeaponShotCalculation : MonoBehaviour
 
     private WeaponInfo _currentWeapon;
 
+    private Ray _ray;
+
     private void CalculateSingleShot()
     {
+        _ray = new Ray(shotPoint.position, shotPoint.forward);
         if (Physics.Raycast(shotPoint.position, shotPoint.forward, out RaycastHit hit))
         {
             Vector3 start = shotPoint.position;
             Vector3 finish = hit.point;
             Debug.DrawLine(start, finish, Color.green, 3f, true);
+            
+            InflictDamage(hit, Vector3.Distance(start, finish));
         }
     }
 
     private void CalculateShotgun()
     {
-        if (Physics.Raycast(shotPoint.position, shotPoint.forward, out RaycastHit hit1))
-        {
-            Vector3 start = shotPoint.position;
-            Vector3 finish = hit1.point;
-            float distance = Vector3.Distance(start, finish);
-            Debug.Log(distance + " " + _currentWeapon.Damage.GetDamageValue(distance));
-        }
+        // if (Physics.Raycast(shotPoint.position, shotPoint.forward, out RaycastHit hit1))
+        // {
+        //     Vector3 start = shotPoint.position;
+        //     Vector3 finish = hit1.point;
+        //     float distance = Vector3.Distance(start, finish);
+        //     Debug.Log(distance + " " + _currentWeapon.Damage.GetDamageValue(distance));
+        // }
 
         for (int i = 0; i < _currentWeapon.Damage.NumberBullets; i++)
         {
@@ -63,8 +68,8 @@ public class WeaponShotCalculation : MonoBehaviour
             _currentWeapon.Damage.StartInterval - inspectionRadius, layerOnlinePlayers,
             QueryTriggerInteraction.Collide);
 
-        Ray ray = new Ray(shotPoint.position, shotPoint.forward);
-        Physics.Raycast(ray, out var directHit, _currentWeapon.Damage.StartInterval, layerOnlinePlayers,
+        _ray = new Ray(shotPoint.position, shotPoint.forward);
+        Physics.Raycast(_ray, out var directHit, _currentWeapon.Damage.StartInterval, layerOnlinePlayers,
             QueryTriggerInteraction.Collide);
 
         if (directHit.collider != null)
@@ -78,6 +83,17 @@ public class WeaponShotCalculation : MonoBehaviour
             Debug.Log("Closest");
             Debug.DrawLine(shotPoint.position, closestHit.point, Color.blue, 5f, true);
         }
+    }
+
+    private void InflictDamage(RaycastHit hit)
+    {
+        hit.transform.gameObject.GetComponent<Damaged>()?.TakeDamage(_currentWeapon.Damage.GetDamageValue());
+    }
+    
+    private void InflictDamage(RaycastHit hit, float distance)
+    {
+        Debug.Log("Distance: " + distance);
+        hit.transform.gameObject.GetComponent<Damaged>()?.TakeDamage(_currentWeapon.Damage.GetDamageValue(distance));
     }
 
     #region GameEvent
@@ -96,6 +112,8 @@ public class WeaponShotCalculation : MonoBehaviour
             case WeaponInfo.WeaponType.Cold:
                 CalculateCold();
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 

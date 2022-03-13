@@ -94,7 +94,7 @@ public class WeaponNonAutomatic : Weapon
         onAmmunitionUpdate.Raise();
     }
 
-    private void Waiting(float delay)
+    protected void Waiting(float delay)
     {
         if (_waitingCoroutine == null)
         {

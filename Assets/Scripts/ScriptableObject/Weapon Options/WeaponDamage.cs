@@ -25,15 +25,24 @@ public class WeaponDamage : ScriptableObject
         {
             return GetDamageValue();
         }
+
+        if (distance < endInterval)
+        {
+            return baseDamage * GetDamageReductionFactor(distance);
+        }
         
-        return baseDamage * (Math.Max(GetDamageReductionFactor(distance), distanceDamageCoefficient));
+        return baseDamage * distanceDamageCoefficient;
     }
 
     private float GetDamageReductionFactor(float distance)
     {
-        Debug.Log(1 - ((distance - startInterval) / (endInterval - startInterval)));
-        return 1 - ((distance - startInterval) / (endInterval - startInterval));
+        float factor = 1 - ((distance - startInterval) / (endInterval - startInterval));
+        
+        return Map(0, 1, distanceDamageCoefficient,1,factor);
     }
+    
+    static float Map(float in_min, float in_max, float out_min, float out_max, float num) 
+        => out_min + (num - in_min) * (out_max - out_min) / (in_max - in_min);
 
     public int NumberBullets => numberBullets;
 
