@@ -11,6 +11,13 @@ public class SlopeChecker : Checker, ITrackingGroundChecker
     private RaycastHit _slopeHit;
     private bool _isGrounded;
 
+    private Transform _transform;
+
+    private void Awake()
+    {
+        _transform = transform;
+    }
+
     private void Update()
     {
         UpdateState();
@@ -19,7 +26,7 @@ public class SlopeChecker : Checker, ITrackingGroundChecker
     protected override bool Check()
     {
         if (!_isGrounded) return false;
-        if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit,
+        if (Physics.Raycast(_transform.position, Vector3.down, out _slopeHit,
             surfaceDetectionDistance, groundMask))
         {
             float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);

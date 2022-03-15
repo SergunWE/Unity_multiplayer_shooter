@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -78,4 +79,9 @@ public class PlayerCrouch : MonoBehaviour
     }
 
     #endregion
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
 }

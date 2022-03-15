@@ -33,7 +33,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8607559708627139313}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 639201382113047716}
   - component: {fileID: 2590001195237389076}
   - component: {fileID: 2802675625490003597}
+  - component: {fileID: 728758593140259638}
   m_Layer: 5
   m_Name: WeaponStatus
   m_TagString: Untagged
@@ -250,6 +251,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &728758593140259638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856273508641696501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611c56fdeaf55a2409fae0c460954d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponStatusLabel: {fileID: 6005036830094899220}
 --- !u!1 &881892911386828520
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +275,7 @@ GameObject:
   - component: {fileID: 4855524492069364482}
   - component: {fileID: 2323379121204315441}
   - component: {fileID: 7785676377211515162}
+  - component: {fileID: 7822568380367833658}
   m_Layer: 5
   m_Name: WeaponName
   m_TagString: Untagged
@@ -281,7 +296,7 @@ RectTransform:
   m_Children:
   - {fileID: 537346294289729819}
   m_Father: {fileID: 8607559708627139313}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -325,6 +340,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7822568380367833658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881892911386828520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1dea2d918d3454d94b7cec6149f9de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponNameLabel: {fileID: 4547681662944641353}
 --- !u!1 &2474196450169666310
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +466,7 @@ RectTransform:
   - {fileID: 3965266102256506233}
   - {fileID: 28461343816338968}
   m_Father: {fileID: 8607559708627139313}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -946,12 +974,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 7222700358397305437}
   - {fileID: 3513369875124177636}
+  - {fileID: 4855524492069364482}
   - {fileID: 639201382113047716}
+  - {fileID: 7222700358397305437}
   - {fileID: 8607559708989394173}
   - {fileID: 8043080889952578383}
-  - {fileID: 4855524492069364482}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1032,9 +1060,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7578e2f67a132ad4693573ef9372f612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunitionLabel: {fileID: 8998153142098036298}
-  weaponNameLabel: {fileID: 4547681662944641353}
-  weaponStatusLabel: {fileID: 6005036830094899220}
+  ammunitionDisplay: {fileID: 7269232739835430529}
+  weaponNameDisplay: {fileID: 7822568380367833658}
+  weaponStatusDisplay: {fileID: 728758593140259638}
 --- !u!1 &8607559708989394172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,7 +1093,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8607559708627139313}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1120,6 +1148,7 @@ GameObject:
   - component: {fileID: 3513369875124177636}
   - component: {fileID: 5159383714858855537}
   - component: {fileID: 1088857964801658721}
+  - component: {fileID: 7269232739835430529}
   m_Layer: 5
   m_Name: AmmunitionPanel
   m_TagString: Untagged
@@ -1140,7 +1169,7 @@ RectTransform:
   m_Children:
   - {fileID: 4459393756070027816}
   m_Father: {fileID: 8607559708627139313}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1184,3 +1213,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7269232739835430529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996511307413191271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f21e9f6fedf4324da5f9586ebb07cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammunitionLabel: {fileID: 8998153142098036298}

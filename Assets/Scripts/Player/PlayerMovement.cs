@@ -44,23 +44,23 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
 
     private void Movement()
     {
-        _moveDirection = orientation.forward * _inputAxis.y + orientation.right * _inputAxis.x;
+        _moveDirection = _inputAxis.y * orientation.forward  + _inputAxis.x * orientation.right;
 
         if (!_exitingSlope && _isSloped)
         {
             //Debug.Log("Slope");
-            _rigidbody.AddForce(slopeChecker.GetSlopeMoveDirection(_moveDirection) *
-                                _movementSpeed * movementSpeedMultiplier, ForceMode.Force);
+            _rigidbody.AddForce(_movementSpeed * movementSpeedMultiplier * 
+                                slopeChecker.GetSlopeMoveDirection(_moveDirection), ForceMode.Force);
         }
 
         else if (_isGrounded)
         {
-            _rigidbody.AddForce(_moveDirection * movementSpeedMultiplier * _movementSpeed, ForceMode.Acceleration);
+            _rigidbody.AddForce(movementSpeedMultiplier * _movementSpeed * _moveDirection, ForceMode.Acceleration);
         }
         else
         {
             //Debug.Log("Air");
-            _rigidbody.AddForce(_moveDirection * movementSpeedMultiplier * _movementSpeed * airMultiplier,
+            _rigidbody.AddForce(movementSpeedMultiplier * _movementSpeed * airMultiplier * _moveDirection,
                 ForceMode.Acceleration);
         }
 
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
             if (velocity.magnitude > _movementSpeed)
             {
                 //Debug.Log("Снижение скорости - склон");
-                _rigidbody.velocity = velocity.normalized * _movementSpeed;
+                _rigidbody.velocity = _movementSpeed * velocity.normalized;
             }
         }
         else
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
             if (flatVel.magnitude > _movementSpeed)
             {
                 //Debug.Log("Снижение скорости");
-                Vector3 limitedVel = flatVel.normalized * _movementSpeed;
+                Vector3 limitedVel = _movementSpeed * flatVel.normalized;
                 _rigidbody.velocity = new Vector3(limitedVel.x, _rigidbody.velocity.y, limitedVel.z);
             }
         }

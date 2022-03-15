@@ -12,8 +12,12 @@ public class PlayerJump : MonoBehaviour, ITrackingGroundChecker
 
     private Rigidbody _rigidbody;
 
+    private Transform _transform;
+    private Vector3 _velocity;
+
     private void Awake()
     {
+        _transform = transform;
         _rigidbody = GetComponentInParent<Rigidbody>();
     }
 
@@ -21,11 +25,10 @@ public class PlayerJump : MonoBehaviour, ITrackingGroundChecker
     {
         if (_isGrounded)
         {
-            var velocity = _rigidbody.velocity;
-            velocity = new Vector3(velocity.x, 0f, velocity.z);
-            _rigidbody.velocity = velocity;
+            _velocity = _rigidbody.velocity;
+            _rigidbody.velocity.Set(_velocity.x, 0f, _velocity.z);
             onPlayerJumped.Raise();
-            _rigidbody.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+            _rigidbody.AddForce(jumpForce * _transform.up, ForceMode.VelocityChange);
         }
     }
 

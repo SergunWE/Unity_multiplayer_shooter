@@ -5,9 +5,9 @@ public class GameCanvas : MonoBehaviour
 {
     public static GameCanvas Instance;
 
-    [SerializeField] private Text ammunitionLabel;
-    [SerializeField] private Text weaponNameLabel;
-    [SerializeField] private Text weaponStatusLabel;
+    [SerializeField] private AmmunitionDisplay ammunitionDisplay;
+    [SerializeField] private WeaponNameDisplay weaponNameDisplay;
+    [SerializeField] private WeaponStatusDisplay weaponStatusDisplay;
 
     private void Awake()
     {
@@ -19,16 +19,16 @@ public class GameCanvas : MonoBehaviour
 
     public void UpdateAmmunition(int clip, int total)
     {
-        ammunitionLabel.text = clip + "/" + total;
+        ammunitionDisplay.RefreshDisplay(clip, total);
     }
 
     public void UpdateWeaponName(string weaponName)
     {
-        weaponNameLabel.text = weaponName;
+        weaponNameDisplay.RefreshDisplay(weaponName);
     }
     
     public void UpdateWeaponStatus(string status)
     {
-        weaponStatusLabel.text = status;
+        weaponStatusDisplay.RefreshDisplay(status);
     }
 }

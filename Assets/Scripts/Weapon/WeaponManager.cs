@@ -22,11 +22,12 @@ public class WeaponManager : MonoBehaviour
 
     private void Awake()
     {
-        InitializeWeapon();
+        
     }
 
     private void Start()
     {
+        InitializeWeapon();
         foreach (var weapon in _weapons)
         {
             weapon.HideWeapon();

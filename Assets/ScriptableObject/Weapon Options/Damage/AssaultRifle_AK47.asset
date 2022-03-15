@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssaultRifle_AK47
   m_EditorClassIdentifier: 
   baseDamage: 20
-  distanceDamageCoefficient: 0.95
+  distanceDamageCoefficient: 0.7
   startInterval: 20
   endInterval: 50
   numberBullets: 1

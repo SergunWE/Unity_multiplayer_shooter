@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Photon.Pun;
+﻿using Photon.Pun;
 using UnityEngine;
 
 [RequireComponent(typeof(PhotonView))]

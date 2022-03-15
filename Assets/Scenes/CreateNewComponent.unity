@@ -130,9 +130,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 14429939}
-  - component: {fileID: 14429940}
   - component: {fileID: 14429942}
   - component: {fileID: 14429941}
+  - component: {fileID: 14429940}
   m_Layer: 12
   m_Name: OnlinePlayerDisplay
   m_TagString: Untagged
@@ -166,11 +166,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 14429938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf6844d2f30dfd84ca2bac8c4ea9d76a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6303e8041666e4d4293b0837d63be042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxValue: 100
-  onPlayerDied: {fileID: 11400000, guid: 5da912cd82a2567409cb7fe6e221e562, type: 2}
+  _value: 0
 --- !u!114 &14429941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 99580167}
   - component: {fileID: 99580166}
   - component: {fileID: 99580165}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1154,7 +1154,7 @@ GameObject:
   - component: {fileID: 1304644778}
   - component: {fileID: 1304644777}
   - component: {fileID: 1304644776}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Plane (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1263,10 +1263,20 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2933168824070057323, guid: b6776abcea87a8f43bb5b8eee3d8afcf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4625119515294989569, guid: b6776abcea87a8f43bb5b8eee3d8afcf,
         type: 3}
       propertyPath: sceneViewId
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232223690223060453, guid: b6776abcea87a8f43bb5b8eee3d8afcf,
+        type: 3}
+      propertyPath: radius
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 6862892531349503146, guid: b6776abcea87a8f43bb5b8eee3d8afcf,
         type: 3}
@@ -1286,7 +1296,7 @@ PrefabInstance:
     - target: {fileID: 6862892531349503149, guid: b6776abcea87a8f43bb5b8eee3d8afcf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.55
+      value: 14.1
       objectReference: {fileID: 0}
     - target: {fileID: 6862892531349503149, guid: b6776abcea87a8f43bb5b8eee3d8afcf,
         type: 3}
@@ -1872,11 +1882,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1872914176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00635627ac1255846ac65ea308bfdda4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6303e8041666e4d4293b0837d63be042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValue: 600
-  onShieldDestroyed: {fileID: 11400000, guid: 09babf7e8c4c2f742bc6ac331f1ce7fc, type: 2}
+  maxValue: 150
+  _value: 0
 --- !u!1 &2087844010
 GameObject:
   m_ObjectHideFlags: 0

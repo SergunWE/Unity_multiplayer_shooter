@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class PlayerDrag : MonoBehaviour, ITrackingGroundChecker
 {
-    private Rigidbody _rigidbody;
-
     [SerializeField] private float groundDrag;
+    
     private bool _isGrounded;
+    
+    private Rigidbody _rigidbody;
 
     private void Awake()
     {

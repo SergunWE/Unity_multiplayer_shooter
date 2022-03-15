@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Photon.Pun;
+﻿using Photon.Pun;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PhotonController : MonoBehaviour
 {
-    [SerializeField] private GameObject playerOnlineDisplay;
-    [SerializeField] private GameObject playerOnlineWeaponDisplay;
+    [SerializeField] private Transform playerOnlineDisplay;
+    [SerializeField] private Transform playerOnlineWeaponDisplay;
 
     [SerializeField] private Rigidbody playerRigidbody;
     [SerializeField] private CapsuleCollider playerCollider;
 
     private PhotonView _photonView;
-
-    [SerializeField] private PlayerManager _playerManager;
+    private PlayerManager _playerManager;
     
     private void Awake()
     {
@@ -23,12 +18,19 @@ public class PhotonController : MonoBehaviour
 
         if (_photonView.IsMine)
         {
-            MeshRenderer[] models = playerOnlineDisplay.GetComponentsInChildren<MeshRenderer>();
-            foreach (var model in models)
+            int modelNumber = playerOnlineDisplay.childCount;
+            // GameObject[] models = new GameObject[modelNumber];
+
+            for (int i = 0; i < modelNumber; i++)
             {
-                Destroy(model.gameObject);
+                Destroy(playerOnlineDisplay.GetChild(i).gameObject);
             }
-            Destroy(playerOnlineWeaponDisplay);
+            
+            // foreach (var model in models)
+            // {
+            //     Destroy(model.gameObject);
+            // }
+            Destroy(playerOnlineWeaponDisplay.gameObject);
         }
         else
         {

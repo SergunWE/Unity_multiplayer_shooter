@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class ChangingScaleCrouch : MonoBehaviour, ITrackingCrouch
@@ -7,25 +8,16 @@ public class ChangingScaleCrouch : MonoBehaviour, ITrackingCrouch
 
     private Vector3 _startScale;
 
-    private void Start()
+    private Transform _transform;
+
+    private void Awake()
     {
-        _startScale = transform.localScale;
+        _transform = transform;
     }
 
-    private IEnumerator ChangeScale(Vector3 finishHeight, float animationDuration)
+    private void Start()
     {
-        Vector3 startHeight = transform.localScale;
-
-        float t = 0;
-
-        while (t < 1)
-        {
-            transform.localScale = Vector3.Lerp(startHeight, finishHeight, t);
-            t += Time.deltaTime / animationDuration;
-            yield return null;
-        }
-
-        transform.localScale = finishHeight;
+        _startScale = _transform.localScale;
     }
 
     #region GameEvent
@@ -35,14 +27,14 @@ public class ChangingScaleCrouch : MonoBehaviour, ITrackingCrouch
         // StopAllCoroutines();
         // StartCoroutine(ChangeScale(new Vector3(_startScale.x, 
         //     _startScale.y * multiplierCrouch, _startScale.z), 0.2f));
-        transform.localScale = new Vector3(_startScale.x, _startScale.y * multiplierCrouch, _startScale.z);
+        _transform.localScale = new Vector3(_startScale.x, multiplierCrouch * _startScale.y , _startScale.z);
     }
 
     public void OnPlayerStandUp()
     {
         // StopAllCoroutines();
         // StartCoroutine(ChangeScale(_startScale, 0.2f));
-        transform.localScale = _startScale;
+        _transform.localScale = _startScale;
     }
 
     #endregion
