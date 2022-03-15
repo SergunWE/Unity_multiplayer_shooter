@@ -1,12 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponStatusDisplay : MonoBehaviour
+public class WeaponStatusDisplay : ValueDisplay
 {
-    [SerializeField] private Text weaponStatusLabel;
     
-    public void RefreshDisplay(string status)
-    {
-        weaponStatusLabel.text = status;
-    }
 }

@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float maxValue;
-    [SerializeField] private float _value;
+    [SerializeField] protected int maxValue;
+    [SerializeField] protected int _value;
 
-    private void Start()
+    protected virtual void Start()
     {
         _value = maxValue;
     }
     
-    public virtual void RecordDamage(float damage)
+    public virtual void RecordDamage(int damage)
     {
         _value -= damage;
         CheckValue();

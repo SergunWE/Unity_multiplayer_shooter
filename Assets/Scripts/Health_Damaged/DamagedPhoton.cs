@@ -10,9 +10,9 @@ public class DamagedPhoton : Damaged
         _healthPhotonView = health.GetComponent<PhotonView>();
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(int damage)
     {
-        float actualDamage = damage * damageMultiplier;
+        int actualDamage = (int)(damage * damageMultiplier);
         _healthPhotonView.RPC("RecordDamage", RpcTarget.All, actualDamage);
     }
 }

@@ -5,9 +5,9 @@ public class Damaged : MonoBehaviour, IDamageable
     [SerializeField] protected float damageMultiplier = 1;
     [SerializeField] protected Health health;
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(int damage)
     {
-        float actualDamage = damage * damageMultiplier;
+        int actualDamage = (int)(damage * damageMultiplier);
         health.RecordDamage(actualDamage);
     }
 }
