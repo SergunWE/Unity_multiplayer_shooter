@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using Photon.Pun;
+using Random = UnityEngine.Random;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -28,12 +29,15 @@ public class PlayerManager : MonoBehaviour
     private void CreateController() 
     {
         //создаём экземпляр контроллера игрока
-        Debug.Log("Instantiated Player Controller");
-        _playerController = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player"), 
-            Vector3.zero, Quaternion.identity, 0, new object[]{_photonView.ViewID});
+        //Debug.Log("Instantiated Player Controller");
+        _playerController = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player"),
+            new Vector3(Random.Range(-100, 100), 0, Random.Range(-100, 100))
+            , Quaternion.identity, 0, new object[]{_photonView.ViewID});
+        
+        _playerController.GetComponentInChildren<PhotonController>().SetPlayerManager();
     }
 
-    public void Die()
+    public void DeathPlayer()
     {
         PhotonNetwork.Destroy(_playerController);
         CreateController();

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79da1aa6988f89c479e367010a1ac3f2, type: 3}
   m_Name: Cold_Axe
   m_EditorClassIdentifier: 
-  baseDamage: 50
+  baseDamage: 49
   distanceDamageCoefficient: 0
-  startInterval: 5
-  endInterval: 5
+  startInterval: 1.5
+  endInterval: 1.5
   numberBullets: 1

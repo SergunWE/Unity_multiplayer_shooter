@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79da1aa6988f89c479e367010a1ac3f2, type: 3}
   m_Name: SniperRifle_M82
   m_EditorClassIdentifier: 
-  baseDamage: 90
-  distanceDamageCoefficient: 0.99
-  startInterval: 70
-  endInterval: 200
+  baseDamage: 70
+  distanceDamageCoefficient: 0.95
+  startInterval: 50
+  endInterval: 100
   numberBullets: 1

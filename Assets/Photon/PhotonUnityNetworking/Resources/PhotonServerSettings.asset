@@ -42,6 +42,7 @@ MonoBehaviour:
   - RPC_TakeDamage
   - RPC_TakeDamagePlayer
   - RPC_TakeDamageShield
+  - RecordDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

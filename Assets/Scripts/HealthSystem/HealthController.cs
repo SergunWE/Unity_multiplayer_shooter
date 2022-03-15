@@ -45,7 +45,7 @@ public class HealthController : MonoBehaviour
         Debug.Log("Event Die");
         if (_photonView.IsMine)
         {
-            _playerManager.Die();
+           // _playerManager.Die();
         }
     }
 }

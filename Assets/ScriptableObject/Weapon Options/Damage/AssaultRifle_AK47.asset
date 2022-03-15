@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79da1aa6988f89c479e367010a1ac3f2, type: 3}
   m_Name: AssaultRifle_AK47
   m_EditorClassIdentifier: 
-  baseDamage: 40
+  baseDamage: 20
   distanceDamageCoefficient: 0.95
-  startInterval: 50
-  endInterval: 100
+  startInterval: 20
+  endInterval: 50
   numberBullets: 1

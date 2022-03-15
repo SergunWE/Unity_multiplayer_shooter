@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79da1aa6988f89c479e367010a1ac3f2, type: 3}
   m_Name: Pistol_Ncp
   m_EditorClassIdentifier: 
-  baseDamage: 20
+  baseDamage: 10
   distanceDamageCoefficient: 0.8
-  startInterval: 20
-  endInterval: 100
+  startInterval: 10
+  endInterval: 30
   numberBullets: 1

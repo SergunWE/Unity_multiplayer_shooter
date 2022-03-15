@@ -7,8 +7,8 @@ public class WeaponShotCalculation : MonoBehaviour
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private Transform shotPoint;
 
-    [SerializeField] private LayerMask layerOnlinePlayers;
-    [SerializeField] private float inspectionRadius;
+    //[SerializeField] private LayerMask layerСhecksCold;
+    //[SerializeField] private float inspectionRadius;
 
     private WeaponInfo _currentWeapon;
 
@@ -51,38 +51,44 @@ public class WeaponShotCalculation : MonoBehaviour
             Quaternion rot = Quaternion.LookRotation(Vector3.forward * 100 + deviation3D);
             Vector3 forwardVector = shotPoint.transform.rotation * rot * Vector3.forward;
 
+            //подумать, как оптимизировать большое количество дробинок
+            
             if (Physics.Raycast(shotPoint.position, forwardVector, out RaycastHit hit))
             {
                 Vector3 start = shotPoint.position;
                 Vector3 finish = hit.point;
-                Debug.DrawLine(start, finish, Color.green, 10f, true);
+                Debug.DrawLine(start, finish, Color.yellow, 10f, true);
+                
+                InflictDamage(hit, Vector3.Distance(start, finish));
             }
         }
     }
 
     private void CalculateCold()
     {
-        Vector3 extents = Vector3.one * inspectionRadius;
-        Physics.BoxCast(shotPoint.position, extents/2, shotPoint.forward, out RaycastHit closestHit, 
-            Quaternion.Euler(0,0,0),
-            _currentWeapon.Damage.StartInterval - inspectionRadius, layerOnlinePlayers,
-            QueryTriggerInteraction.Collide);
-
+        // Vector3 extents = Vector3.one * inspectionRadius;
+        // Physics.BoxCast(shotPoint.position, extents/2, shotPoint.forward, out RaycastHit closestHit, 
+        //     Quaternion.Euler(0,0,0),
+        //     _currentWeapon.Damage.StartInterval - inspectionRadius, layerСhecksCold,
+        //     QueryTriggerInteraction.Collide);
+        
         _ray = new Ray(shotPoint.position, shotPoint.forward);
-        Physics.Raycast(_ray, out var directHit, _currentWeapon.Damage.StartInterval, layerOnlinePlayers,
-            QueryTriggerInteraction.Collide);
+        Physics.Raycast(_ray, out var directHit, _currentWeapon.Damage.StartInterval, 
+            Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide);
 
         if (directHit.collider != null)
         {
             Debug.Log("Direct");
             Debug.DrawLine(shotPoint.position, directHit.point, Color.red, 5f, true);
+            
+            InflictDamage(directHit);
         }
 
-        if (closestHit.collider != null)
-        {
-            Debug.Log("Closest");
-            Debug.DrawLine(shotPoint.position, closestHit.point, Color.blue, 5f, true);
-        }
+        // if (closestHit.collider != null)
+        // {
+        //     Debug.Log("Closest");
+        //     Debug.DrawLine(shotPoint.position, closestHit.point, Color.blue, 5f, true);
+        // }
     }
 
     private void InflictDamage(RaycastHit hit)
