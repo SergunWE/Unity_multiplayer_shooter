@@ -20,6 +20,8 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private GameEvent onWeaponReload;
     [SerializeField] private GameEvent onAmmunitionUpdate;
 
+    private Weapon _currentWeapon;
+
     private void Awake()
     {
         
@@ -40,9 +42,10 @@ public class WeaponManager : MonoBehaviour
     {
         if (index >= _weapons.Length || index < 0) return;
 
-        _weapons[_currentWeaponIndex].HideWeapon();
+        _currentWeapon.HideWeapon();
         _currentWeaponIndex = index;
-        _weapons[index].ShowWeapon();
+        _currentWeapon = _weapons[index];
+        _currentWeapon.ShowWeapon();
         
         OnAmmunitionUpdate();
         WeaponNameUpdate();
@@ -85,6 +88,8 @@ public class WeaponManager : MonoBehaviour
         _weapons[0].SetOnWeaponAlternateUse(onWeaponAlternateUse);
         _weapons[0].SetOnWeaponReload(onWeaponReload);
         _weapons[0].SetOnAmmunitionUpdate(onAmmunitionUpdate);
+
+        _currentWeapon = _weapons[0];
     }
 
     private void WeaponNameUpdate()
@@ -160,5 +165,11 @@ public class WeaponManager : MonoBehaviour
 
     #endregion
 
-    public WeaponInfo CurrentWeapon => _weapons[_currentWeaponIndex].WeaponInfo;
+    public WeaponInfo CurrentWeaponInfo => _currentWeapon.WeaponInfo;
+
+    public Vector3 BarrelPosition()
+    {
+        //Debug.Log(_weapons[_currentWeaponIndex].transform.GetChild(0).GetChild(0).gameObject.name);
+        return _currentWeapon.transform.GetChild(0).GetChild(0).position;
+    }
 }

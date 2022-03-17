@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: AssaultRifle_AK47
   m_EditorClassIdentifier: 
   model: {fileID: 3690505412905671172, guid: 8e52c97907e2ad04499eb1f8aaffa8d6, type: 3}
+  displacementBarrel: {x: 0, y: 0, z: 0.55}

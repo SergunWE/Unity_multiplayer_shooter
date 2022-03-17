@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Pistol_Ncp
   m_EditorClassIdentifier: 
   model: {fileID: 9000519642121710891, guid: 6c002320b9590c2478433e0a006fd554, type: 3}
+  displacementBarrel: {x: 0, y: 0, z: 0.3}

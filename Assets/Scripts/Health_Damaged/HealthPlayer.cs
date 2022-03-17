@@ -8,6 +8,7 @@ public class HealthPlayer : HealthPhoton
     protected override void Start()
     {
         base.Start();
+        if(!_photonView.IsMine) return;
         GameCanvas.Instance.UpdatePlayerHealth(_value, maxValue);
     }
 

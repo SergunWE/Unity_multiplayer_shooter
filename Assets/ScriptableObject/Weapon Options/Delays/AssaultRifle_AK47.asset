@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98f143431753e04f89590b9c4660c4a, type: 3}
   m_Name: AssaultRifle_AK47
   m_EditorClassIdentifier: 
-  pulling: 1.2
+  pulling: 1
   shoot: 0.1
   reload: 2

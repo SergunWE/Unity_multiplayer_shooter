@@ -7,6 +7,8 @@ public class WeaponShotCalculation : MonoBehaviour
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private Transform shotPoint;
 
+    [SerializeField] private GameEvent onWeaponCalculateShot;
+
     private WeaponInfo _currentWeapon;
     private WeaponDamage _weaponDamage;
 
@@ -62,7 +64,6 @@ public class WeaponShotCalculation : MonoBehaviour
     {
         _shotMaxDistance = _currentWeapon.Damage.StartInterval;
         _shotColor = Color.red;
-        _shotMaxDistance = _currentWeapon.Damage.StartInterval;
         if (CalculateShot())
         {
             _shotDistance = -1;
@@ -77,19 +78,19 @@ public class WeaponShotCalculation : MonoBehaviour
             Debug.LogError("No hit was detected");
             return;
         }
-        int damage = _calculateDamage.GetDamageValue(_currentWeapon.Damage, _shotDistance);
-        Debug.Log("Distance: " + _shotDistance + " Damage: " + damage);
-
-        // Debug.Log(_calculateDamage);
-        // Debug.Log(_shotDistance);
-        // Debug.Log(_hit.transform);
+        
         if (_shotDistance >= 0)
         {
+            int damage = _calculateDamage.GetDamageValue(_currentWeapon.Damage, _shotDistance);
+            Debug.Log("Distance: " + _shotDistance + " Damage: " + damage);
             _hit.transform.gameObject.GetComponent<Damaged>()?.TakeDamage(damage);
-            return;
+        }
+        else
+        {
+            _hit.transform.gameObject.GetComponent<Damaged>()?.TakeDamage(_currentWeapon.Damage.BaseDamage);
         }
 
-        _hit.transform.gameObject.GetComponent<Damaged>()?.TakeDamage(_currentWeapon.Damage.BaseDamage);
+        
     }
 
     private void RefreshTransform()
@@ -113,11 +114,30 @@ public class WeaponShotCalculation : MonoBehaviour
 
     private bool CalculateShot()
     {
-        if (!CheckHit()) return false;
+        _shotDistance = _shotMaxDistance;
+        if (!CheckHit())
+        {
+            onWeaponCalculateShot.Raise();
+            return false;
+        }
         _shotDistance = (int)Vector3.Distance(_shotPointPosition, _hit.point);
-        DrawLine(_shotColor);
+        onWeaponCalculateShot.Raise();
+        
         return true;
     }
+
+    public Vector3 HitPosition()
+    {
+        Debug.Log(_hit.collider);
+        if (_hit.collider == null)
+        {
+            Debug.Log("VAR");
+            return _shotPointForward * _shotMaxDistance;
+        }
+        return _hit.point;
+    }
+
+    public int Distance => _shotDistance;
 
     #region GameEvent
 
@@ -125,7 +145,7 @@ public class WeaponShotCalculation : MonoBehaviour
     {
         RefreshTransform();
         
-        _currentWeapon = weaponManager.CurrentWeapon;
+        _currentWeapon = weaponManager.CurrentWeaponInfo;
         switch (_currentWeapon.Type)
         {
             case WeaponInfo.WeaponType.SingleShot:

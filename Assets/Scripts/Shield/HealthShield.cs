@@ -8,6 +8,7 @@ public class HealthShield : HealthPhoton
     protected override void Start()
     {
         base.Start();
+        if(!_photonView.IsMine) return;
         GameCanvas.Instance.UpdateShieldHealth(_value, maxValue);
     }
 

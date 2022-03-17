@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Shotgun_Super
   m_EditorClassIdentifier: 
   model: {fileID: 664367150392452523, guid: 39be94096176df445ad0774825179428, type: 3}
+  displacementBarrel: {x: 0, y: 0, z: 0.5}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shotgun_Super
   m_EditorClassIdentifier: 
   baseDamage: 5
-  distanceDamageCoefficient: 0.3
+  distanceDamageCoefficient: 0.5
   startInterval: 5
   endInterval: 30
-  numberBullets: 9
+  numberBullets: 10

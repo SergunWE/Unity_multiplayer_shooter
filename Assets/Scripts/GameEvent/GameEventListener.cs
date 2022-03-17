@@ -22,6 +22,6 @@ public class GameEventListener : MonoBehaviour
 
     public void OnEventRaised()
     {
-        response.Invoke();
+        response?.Invoke();
     }
 }

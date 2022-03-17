@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f15b6d68d25a10b439945c0a1021b934, type: 3}
-  m_Name: SniperRifle_M82
+  m_Script: {fileID: 11500000, guid: 00bc615811c02c04b8c9bd268dd0eacf, type: 3}
+  m_Name: OnWeaponCalculateShot
   m_EditorClassIdentifier: 
-  model: {fileID: 3619791337535870533, guid: 58369db08aa26554ca1d744ede5570c6, type: 3}
-  displacementBarrel: {x: 0, y: 0, z: 0.6}

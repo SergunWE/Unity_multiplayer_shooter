@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Cold_Axe
   m_EditorClassIdentifier: 
   model: {fileID: 6650022262087724030, guid: 3e41981509dc17140bf6ffcdc876e046, type: 3}
+  displacementBarrel: {x: 0, y: 0, z: 0}

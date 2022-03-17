@@ -63,6 +63,7 @@ public class PlayerCrouch : MonoBehaviour
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
+        if(!gameObject.activeSelf) return;
         if (context.performed)
         {
             //Debug.Log("Crouch");

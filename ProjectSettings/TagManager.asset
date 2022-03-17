@@ -17,7 +17,7 @@ TagManager:
   - MapCanJump
   - PlayerShield
   - FP_Weapon
-  - Player
+  - BulletTrace
   - PlayerOnline
   - MapNotJump
   - 
