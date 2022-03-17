@@ -4,19 +4,13 @@ using UnityEngine;
 public class WeaponCold : Weapon
 {
     protected Coroutine _waitingCoroutine;
-    
-    private void Awake()
-    {
-        _weaponModel = Instantiate(weaponInfo.Model.Model, transform);
-        _cartridgesClip = _cartridgesTotal = 0;
-    }
 
     public override void Use()
     {
         if (_canUse)
         {
             onWeaponUse.Raise();
-            Waiting(weaponInfo.Delays.Shoot);
+            Waiting(_shoot);
         }
     }
     
@@ -26,15 +20,15 @@ public class WeaponCold : Weapon
         {
             onWeaponAlternateUse.Raise();
             //для задержки альтаернативного использования используем значения перезарядки
-            Waiting(weaponInfo.Delays.Reload);
+            Waiting(_reload);
         }
     }
 
     public override void ShowWeapon()
     {
         onWeaponPulling.Raise();
-        Waiting(weaponInfo.Delays.Pulling);
-        _weaponModel.SetActive(true);
+        Waiting(_pulling);
+        _weaponModelInGame.SetActive(true);
     }
 
     public override void HideWeapon()
@@ -42,7 +36,7 @@ public class WeaponCold : Weapon
         _canUse = false;
         StopAllCoroutines();
         _waitingCoroutine = null;
-        _weaponModel.SetActive(false);
+        _weaponModelInGame.SetActive(false);
     }
     
     private void Waiting(float delay)

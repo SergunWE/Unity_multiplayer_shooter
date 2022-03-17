@@ -14,10 +14,9 @@ public class WeaponDamage : ScriptableObject
     [Header("The number of bullets fired per round")] 
     [SerializeField] private int numberBullets = 1;
 
-    public int NumberBullets => numberBullets;
-
-    public int StartInterval => startInterval;
-    public int EndInterval => endInterval;
     public int BaseDamage => baseDamage;
     public float DistanceDamageCoefficient => distanceDamageCoefficient;
+    public int StartInterval => startInterval;
+    public int EndInterval => endInterval;
+    public int NumberBullets => numberBullets;
 }

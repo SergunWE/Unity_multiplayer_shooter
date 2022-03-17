@@ -12,17 +12,17 @@ public class WeaponInfo : ItemInfo
     [SerializeField] private WeaponModel model;
 
     [SerializeField] private WeaponType type;
-    
+
     public WeaponDamage Damage => damage;
     public WeaponDelays Delays => delays;
     public WeaponAmmunition Ammunition => ammunition;
     public WeaponModel Model => model;
     public WeaponType Type => type;
+}
 
-    public enum WeaponType
-    {
-        SingleShot,
-        Shotgun,
-        Cold
-    }
+public enum WeaponType
+{
+    SingleShot,
+    Shotgun,
+    Cold
 }

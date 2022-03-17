@@ -128,10 +128,8 @@ public class WeaponShotCalculation : MonoBehaviour
 
     public Vector3 HitPosition()
     {
-        Debug.Log(_hit.collider);
         if (_hit.collider == null)
         {
-            Debug.Log("VAR");
             return _shotPointForward * _shotMaxDistance;
         }
         return _hit.point;
@@ -148,13 +146,13 @@ public class WeaponShotCalculation : MonoBehaviour
         _currentWeapon = weaponManager.CurrentWeaponInfo;
         switch (_currentWeapon.Type)
         {
-            case WeaponInfo.WeaponType.SingleShot:
+            case WeaponType.SingleShot:
                 CalculateSingleShot();
                 break;
-            case WeaponInfo.WeaponType.Shotgun:
+            case WeaponType.Shotgun:
                 CalculateShotgun();
                 break;
-            case WeaponInfo.WeaponType.Cold:
+            case WeaponType.Cold:
                 CalculateCold();
                 break;
             default:
