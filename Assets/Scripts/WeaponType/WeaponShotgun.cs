@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponShotgun : WeaponNonAutomatic
@@ -17,9 +16,9 @@ public class WeaponShotgun : WeaponNonAutomatic
     {
         _isReloading = true;
         _canUse = false;
-        while (_currentClip < _clip && _currentTotal > 0)
+        while (_currentClip < weaponInfo.Ammunition.Clip && _currentTotal > 0)
         {
-            yield return new WaitForSeconds(_reload);
+            yield return new WaitForSeconds(weaponInfo.Delays.Reload);
             if(!_isReloading) break;
             ReplaceClip();
             _canUse = true;
@@ -35,7 +34,7 @@ public class WeaponShotgun : WeaponNonAutomatic
         onWeaponUse.Raise();
         _currentClip--;
         AmmunitionUpdate();
-        Waiting(_shoot);
+        Waiting(weaponInfo.Delays.Shoot);
         _isReloading = false;
     }
 }

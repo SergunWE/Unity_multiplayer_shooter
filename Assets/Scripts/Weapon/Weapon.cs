@@ -17,61 +17,16 @@ public abstract class Weapon : Item
     protected static GameEvent onAmmunitionUpdate;
     
     protected GameObject _weaponModelInGame;
-
-    //Damage Caching
-    protected int _baseDamage;
-    protected float _distanceDamageCoefficient;
-    protected int _startInterval;
-    protected int _endInterval;
-    protected int _numberBullets;
     
-    //Delays Caching
-    protected float _pulling;
-    protected float _shoot;
-    protected float _reload;
-    
-    //Ammunition Caching
     protected int _currentClip;
     protected int _currentTotal;
 
-    protected int _clip;
-    protected int _total;
-    
-    //Model Caching
-    protected GameObject _model;
-    protected Vector3 _displacementBarrel;
-
-    //Type Caching
-    protected WeaponType _type;
-
     protected virtual void Awake()
     {
-        WeaponDamage wd = weaponInfo.Damage;
-        _baseDamage = wd.BaseDamage;
-        _distanceDamageCoefficient = wd.DistanceDamageCoefficient;
-        _startInterval = wd.StartInterval;
-        _endInterval = wd.EndInterval;
-        _numberBullets = wd.NumberBullets;
+        _weaponModelInGame = Instantiate(weaponInfo.Model.Model, transform);
 
-        WeaponDelays wds = weaponInfo.Delays;
-        _pulling = wds.Pulling;
-        _shoot = wds.Shoot;
-        _reload = wds.Reload;
-
-        WeaponAmmunition wa = weaponInfo.Ammunition;
-        _clip = wa.Clip;
-        _total = wa.Total;
-
-        WeaponModel wm = weaponInfo.Model;
-        _model = wm.Model;
-        _displacementBarrel = wm.DisplacementBarrel;
-
-        _type = weaponInfo.Type;
-        
-        _weaponModelInGame = Instantiate(_model, transform);
-
-        _currentClip = _clip;
-        _currentTotal = _total;
+        _currentClip = weaponInfo.Ammunition.Clip;
+        _currentTotal = weaponInfo.Ammunition.Total;
     }
 
     public abstract override void Use();

@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Axe
   damage: {fileID: 11400000, guid: 9fbd657b1fca0b045af4126b03f7b663, type: 2}
   delays: {fileID: 11400000, guid: 791f99bccb64c354a9edc4453b641c6e, type: 2}
-  ammunition: {fileID: 0}
+  ammunition: {fileID: 11400000, guid: 428d22a0b6b1a7f4e9d89060cfd744eb, type: 2}
   model: {fileID: 11400000, guid: 898543edb338217468553bcece6762aa, type: 2}
   type: 2

@@ -36,7 +36,7 @@ public class WeaponNonAutomatic : Weapon
     public override void Reload()
     {
         if(_isPulling) return;
-        if (_currentClip != _clip && _currentTotal > 0)
+        if (_currentClip != weaponInfo.Ammunition.Clip && _currentTotal > 0)
         {
             onWeaponReload.Raise();
             if (_startReloadingCoroutine == null)
@@ -49,7 +49,7 @@ public class WeaponNonAutomatic : Weapon
     public override void ShowWeapon()
     {
         onWeaponPulling.Raise();
-        Waiting(_pulling);
+        Waiting(weaponInfo.Delays.Pulling);
         _isPulling = true;
         ChangeWeaponModel(true);
     }
@@ -72,7 +72,7 @@ public class WeaponNonAutomatic : Weapon
         onWeaponUse.Raise();
         _currentClip--;
         AmmunitionUpdate();
-        Waiting(_shoot);
+        Waiting(weaponInfo.Delays.Shoot);
         //StartCoroutine(WaitingCoroutine(weaponInfo.Delays.Shoot));
         
         
@@ -80,7 +80,7 @@ public class WeaponNonAutomatic : Weapon
 
     protected virtual void ReplaceClip()
     {
-        int cartridgesRequired = _clip - _currentClip;
+        int cartridgesRequired = weaponInfo.Ammunition.Clip - _currentClip;
         int cartridgesSpentReloading = Math.Min(cartridgesRequired, _currentTotal);
         _currentClip += cartridgesSpentReloading;
         _currentTotal -= cartridgesSpentReloading;
@@ -135,9 +135,9 @@ public class WeaponNonAutomatic : Weapon
         }
         
         _canUse = false;
-        yield return new WaitForSeconds(_reload - _pulling);
+        yield return new WaitForSeconds(weaponInfo.Delays.Reload - weaponInfo.Delays.Pulling);
         ReplaceClip();
-        yield return StartCoroutine(WaitingCoroutine(_pulling));
+        yield return StartCoroutine(WaitingCoroutine(weaponInfo.Delays.Pulling));
         _startReloadingCoroutine = null;
     }
 

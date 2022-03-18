@@ -10,7 +10,7 @@ public class WeaponCold : Weapon
         if (_canUse)
         {
             onWeaponUse.Raise();
-            Waiting(_shoot);
+            Waiting(weaponInfo.Delays.Shoot);
         }
     }
     
@@ -20,14 +20,14 @@ public class WeaponCold : Weapon
         {
             onWeaponAlternateUse.Raise();
             //для задержки альтаернативного использования используем значения перезарядки
-            Waiting(_reload);
+            Waiting(weaponInfo.Delays.Reload);
         }
     }
 
     public override void ShowWeapon()
     {
         onWeaponPulling.Raise();
-        Waiting(_pulling);
+        Waiting(weaponInfo.Delays.Pulling);
         _weaponModelInGame.SetActive(true);
     }
 

@@ -94,7 +94,7 @@ public class WeaponManager : MonoBehaviour
 
     private void WeaponNameUpdate()
     {
-        GameCanvas.Instance.UpdateWeaponName(_weapons[_currentWeaponIndex].WeaponInfo.ItemName);
+        GameCanvas.Instance.UpdateWeaponName(_currentWeapon.WeaponInfo.ItemName);
     }
 
     #region InputEvent
@@ -166,10 +166,4 @@ public class WeaponManager : MonoBehaviour
     #endregion
 
     public WeaponInfo CurrentWeaponInfo => _currentWeapon.WeaponInfo;
-
-    public Vector3 BarrelPosition()
-    {
-        //Debug.Log(_weapons[_currentWeaponIndex].transform.GetChild(0).GetChild(0).gameObject.name);
-        return _currentWeapon.transform.GetChild(0).GetChild(0).position;
-    }
 }

@@ -130,7 +130,7 @@ public class WeaponShotCalculation : MonoBehaviour
     {
         if (_hit.collider == null)
         {
-            return _shotPointForward * _shotMaxDistance;
+            return _shotPointForward * 10;
         }
         return _hit.point;
     }
