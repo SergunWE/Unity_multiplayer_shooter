@@ -27,6 +27,7 @@ namespace Photon.Pun.UtilityScripts
             return;
             #endif
 
+/*
             EventSystem sceneEventSystem = FindObjectOfType<EventSystem>();
             if (sceneEventSystem == null)
             {
@@ -35,6 +36,7 @@ namespace Photon.Pun.UtilityScripts
                 eventSystem.AddComponent<EventSystem>();
                 eventSystem.AddComponent<StandaloneInputModule>();
             }
+*/
         }
     }
 }

@@ -159,8 +159,8 @@ public class WeaponManager : MonoBehaviour
 
     public void OnAmmunitionUpdate()
     {
-        GameCanvas.Instance.UpdateAmmunition(_weapons[_currentWeaponIndex].CartridgesClip,
-            _weapons[_currentWeaponIndex].CartridgesTotal);
+        GameCanvas.Instance.UpdateAmmunition(_weapons[_currentWeaponIndex].CurrentClip,
+            _weapons[_currentWeaponIndex].CurrentTotal);
     }
 
     #endregion

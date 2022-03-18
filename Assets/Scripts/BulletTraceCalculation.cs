@@ -53,7 +53,7 @@ public class BulletTraceCalculation : MonoBehaviour
 
     public void OnWeaponCalculateShot()
     {
-        if(weaponManager.CurrentWeaponInfo.Type == WeaponInfo.WeaponType.Cold) return;
+        if(weaponManager.CurrentWeaponInfo.Type == WeaponType.Cold) return;
         if(weaponShotCalculation.Distance < 1) return;
         _weaponInfo = weaponManager.CurrentWeaponInfo;
         _startingPoint = weaponManager.BarrelPosition();

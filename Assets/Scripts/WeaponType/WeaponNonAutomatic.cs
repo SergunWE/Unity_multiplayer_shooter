@@ -11,12 +11,10 @@ public class WeaponNonAutomatic : Weapon
     protected Coroutine _waitingCoroutine;
     protected Coroutine _changeWeaponModelCoroutine;
 
-    private void Awake()
+    protected override void Awake()
     {
-        _cartridgesClip = weaponInfo.Ammunition.Clip;
-        _cartridgesTotal = weaponInfo.Ammunition.Total;
-
-        _weaponModel = Instantiate(weaponInfo.Model.Model, transform);
+        base.Awake();
+        
     }
 
     public override void Use()
@@ -38,7 +36,7 @@ public class WeaponNonAutomatic : Weapon
     public override void Reload()
     {
         if(_isPulling) return;
-        if (_cartridgesClip != weaponInfo.Ammunition.Clip && _cartridgesTotal > 0)
+        if (_currentClip != _clip && _currentTotal > 0)
         {
             onWeaponReload.Raise();
             if (_startReloadingCoroutine == null)
@@ -51,7 +49,7 @@ public class WeaponNonAutomatic : Weapon
     public override void ShowWeapon()
     {
         onWeaponPulling.Raise();
-        Waiting(weaponInfo.Delays.Pulling);
+        Waiting(_pulling);
         _isPulling = true;
         ChangeWeaponModel(true);
     }
@@ -70,11 +68,11 @@ public class WeaponNonAutomatic : Weapon
 
     protected virtual void Shoot()
     {
-        if (!_canUse || _cartridgesClip <= 0) return;
+        if (!_canUse || _currentClip <= 0) return;
         onWeaponUse.Raise();
-        _cartridgesClip--;
+        _currentClip--;
         AmmunitionUpdate();
-        Waiting(weaponInfo.Delays.Shoot);
+        Waiting(_shoot);
         //StartCoroutine(WaitingCoroutine(weaponInfo.Delays.Shoot));
         
         
@@ -82,10 +80,10 @@ public class WeaponNonAutomatic : Weapon
 
     protected virtual void ReplaceClip()
     {
-        int cartridgesRequired = weaponInfo.Ammunition.Clip - _cartridgesClip;
-        int cartridgesSpentReloading = Math.Min(cartridgesRequired, _cartridgesTotal);
-        _cartridgesClip += cartridgesSpentReloading;
-        _cartridgesTotal -= cartridgesSpentReloading;
+        int cartridgesRequired = _clip - _currentClip;
+        int cartridgesSpentReloading = Math.Min(cartridgesRequired, _currentTotal);
+        _currentClip += cartridgesSpentReloading;
+        _currentTotal -= cartridgesSpentReloading;
         AmmunitionUpdate();
     }
 
@@ -137,15 +135,15 @@ public class WeaponNonAutomatic : Weapon
         }
         
         _canUse = false;
-        yield return new WaitForSeconds(weaponInfo.Delays.Reload - weaponInfo.Delays.Pulling);
+        yield return new WaitForSeconds(_reload - _pulling);
         ReplaceClip();
-        yield return StartCoroutine(WaitingCoroutine(weaponInfo.Delays.Pulling));
+        yield return StartCoroutine(WaitingCoroutine(_pulling));
         _startReloadingCoroutine = null;
     }
 
     private IEnumerator ChangeWeaponModelCoroutine(bool active)
     {
-        _weaponModel.SetActive(active);
+        _weaponModelInGame.SetActive(active);
         yield break;
     }
 }
