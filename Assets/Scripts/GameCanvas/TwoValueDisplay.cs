@@ -1,10 +1,10 @@
 ﻿using System.Text;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class TwoValueDisplay : ValueDisplay
+public class TwoValueDisplay<T> : ValueDisplay<T>
 {
-    [SerializeField] private char valueBaffle = '/';
+    [SerializeField] protected T secondValue;
+    [SerializeField] protected char valueBaffle = '/';
 
     private StringBuilder _stringBuilder;
     
@@ -14,12 +14,17 @@ public class TwoValueDisplay : ValueDisplay
         _stringBuilder = new StringBuilder();
     }
 
-    public virtual void RefreshDisplay<T>(T firstValue, T secondValue)
+    public override void RefreshDisplay()
+    {
+        RefreshDisplay(value, secondValue);
+    }
+
+    public virtual void RefreshDisplay<TV>(TV newFirstValue, TV newSecondValue)
     {
         _stringBuilder.Clear();
-        _stringBuilder.Append(firstValue);
+        _stringBuilder.Append(newFirstValue);
         _stringBuilder.Append(valueBaffle);
-        _stringBuilder.Append(secondValue);
+        _stringBuilder.Append(newSecondValue);
         label.text = _stringBuilder.ToString();
     }
 }

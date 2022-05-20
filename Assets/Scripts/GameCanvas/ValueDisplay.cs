@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ValueDisplay : MonoBehaviour
+public class ValueDisplay<T> : MonoBehaviour
 {
+    [SerializeField] protected T value;
     [SerializeField] protected Text label;
-    
-    public void RefreshDisplay<T>(T value)
+
+    public virtual void RefreshDisplay()
     {
-        label.text = value.ToString();
+        RefreshDisplay(value);
+    }
+
+    public void RefreshDisplay(T newValue)
+    {
+        label.text = newValue.ToString();
     }
 }

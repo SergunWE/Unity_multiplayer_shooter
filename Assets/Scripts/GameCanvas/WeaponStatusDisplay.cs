@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-
-public class WeaponStatusDisplay : ValueDisplay
+﻿
+public class WeaponStatusDisplay : ValueDisplay<string>
 {
     
 }

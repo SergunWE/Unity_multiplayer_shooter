@@ -9,7 +9,6 @@ public class GroundChecker : Checker
 
     //количество коллайдеров в месте проверки земли
     private Collider[] _colliders;
-    
     private Transform _transform;
 
     private void Awake()
@@ -20,7 +19,6 @@ public class GroundChecker : Checker
         //размером 2 - игрок и любой другой.
         //Добавился дополнительный коллайдер для проверки
         _colliders = new Collider[3];
-        
     }
 
     private void Update()

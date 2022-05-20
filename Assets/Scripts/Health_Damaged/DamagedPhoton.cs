@@ -1,9 +1,11 @@
 ﻿using Photon.Pun;
-
+using UnityEngine;
 
 public class DamagedPhoton : Damaged
 {
+    [SerializeField] protected HealthPhoton health;
     private PhotonView _healthPhotonView;
+
 
     private void Awake()
     {
@@ -12,7 +14,7 @@ public class DamagedPhoton : Damaged
 
     public override void TakeDamage(int damage)
     {
-        int actualDamage = (int)(damage * damageMultiplier);
-        _healthPhotonView.RPC("RecordDamage", RpcTarget.All, actualDamage);
+        base.TakeDamage(damage);
+        _healthPhotonView.RPC("RecordDamage", RpcTarget.All, ActualDamage);
     }
 }

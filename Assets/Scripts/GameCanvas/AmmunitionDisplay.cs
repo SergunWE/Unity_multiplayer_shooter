@@ -1,4 +1,4 @@
-﻿public class AmmunitionDisplay : TwoValueDisplay
+﻿public class AmmunitionDisplay : TwoValueDisplay<IntegerReference>
 {
     
 }

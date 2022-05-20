@@ -1,33 +1,14 @@
-﻿using Photon.Pun;
+﻿using System;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+[Serializable]
+public abstract class Health<T, M> : MonoBehaviour
 {
-    [SerializeField] protected int maxValue;
-    [SerializeField] protected int _value;
+    [SerializeField] protected T value;
+    [SerializeField] protected M maxValue;
 
-    protected virtual void Start()
-    {
-        _value = maxValue;
-    }
-    
-    public virtual void RecordDamage(int damage)
-    {
-        _value -= damage;
-        CheckValue();
-    }
-
-    private void CheckValue()
-    {
-        Debug.Log("check value" + _value);
-        if (_value <= 0)
-        {
-            Death();
-        }
-    }
-
-    protected virtual void Death()
-    {
-        Debug.Log("Death");
-    }
+    protected abstract void Start();
+    public abstract void RecordDamage(int damage);
+    public abstract void CheckValue();
+    protected abstract void Death();
 }

@@ -35,6 +35,7 @@ public class WeaponShotCalculation : MonoBehaviour
         _shotColor = Color.green;
         if (CalculateShot())
         {
+            DrawLine(_shotColor);
             InflictDamage();
         }
     }
@@ -53,6 +54,7 @@ public class WeaponShotCalculation : MonoBehaviour
             _shotColor = Color.yellow;
             if (CalculateShot())
             {
+                DrawLine(_shotColor);
                 InflictDamage();
             }
             
@@ -67,6 +69,7 @@ public class WeaponShotCalculation : MonoBehaviour
         if (CalculateShot())
         {
             _shotDistance = -1;
+            DrawLine(_shotColor);
             InflictDamage();
         }
     }

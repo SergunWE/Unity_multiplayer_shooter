@@ -63,6 +63,7 @@ public class PhotonController : MonoBehaviour
 
     public void OnPlayerDied()
     {
+        if(_playerManager == null) return;
         _playerManager.DeathPlayer();
     }
 

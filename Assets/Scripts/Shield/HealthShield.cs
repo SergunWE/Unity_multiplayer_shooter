@@ -8,8 +8,8 @@ public class HealthShield : HealthPhoton
     protected override void Start()
     {
         base.Start();
-        if(!_photonView.IsMine) return;
-        GameCanvas.Instance.UpdateShieldHealth(_value, maxValue);
+        if(!PhotonView.IsMine) return;
+        //GameCanvas.Instance.UpdateShieldHealth(_value.Value, maxValue);
     }
 
     protected override void Death()
@@ -20,8 +20,8 @@ public class HealthShield : HealthPhoton
     [PunRPC]
     public override void RecordDamage(int damage)
     {
-        if(!_photonView.IsMine) return;
+        if(!PhotonView.IsMine) return;
         base.RecordDamage(damage);
-        GameCanvas.Instance.UpdateShieldHealth(_value, maxValue, ValueColor.ColorDamage);
+        //GameCanvas.Instance.UpdateShieldHealth(_value.Value, maxValue, ValueColor.ColorDamage);
     }
 }
