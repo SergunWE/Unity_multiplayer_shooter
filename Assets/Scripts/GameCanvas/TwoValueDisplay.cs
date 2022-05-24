@@ -8,7 +8,6 @@ public class TwoValueDisplay<T> : ValueDisplay<T>
 
     private StringBuilder _stringBuilder;
     
-
     protected virtual void Awake()
     {
         _stringBuilder = new StringBuilder();
@@ -19,7 +18,7 @@ public class TwoValueDisplay<T> : ValueDisplay<T>
         RefreshDisplay(value, secondValue);
     }
 
-    public virtual void RefreshDisplay<TV>(TV newFirstValue, TV newSecondValue)
+    public void RefreshDisplay<TV>(TV newFirstValue, TV newSecondValue)
     {
         _stringBuilder.Clear();
         _stringBuilder.Append(newFirstValue);

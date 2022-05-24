@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00bc615811c02c04b8c9bd268dd0eacf, type: 3}
-  m_Name: OnPlayerHPNegativeChange
+  m_Script: {fileID: 11500000, guid: 6ab88bd29a824008ac65316eab786a92, type: 3}
+  m_Name: ShieldMaxHP
   m_EditorClassIdentifier: 
+  developerDescription: 
+  value: 500

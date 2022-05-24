@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: ShieldHP
   m_EditorClassIdentifier: 
   developerDescription: 
-  value: 199
+  value: 500
   valueChangeEvent: {fileID: 11400000, guid: a7ff2400e07afe74e8afe8ab20edb63e, type: 2}
-  valuePositiveChangeEvent: {fileID: 0}
-  valueNegativeChangeEvent: {fileID: 0}

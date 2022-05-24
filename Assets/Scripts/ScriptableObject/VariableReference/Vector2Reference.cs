@@ -4,11 +4,8 @@ using System;
 [Serializable]
 public class Vector2Reference : VariableReference<Vector2, Vector2Variable>
 {
-    public Vector2Reference() : base()
+    public override string ToString()
     {
-    }
-
-    public Vector2Reference(Vector2 value) : base(value)
-    {
+        return reference.Value.ToString();
     }
 }

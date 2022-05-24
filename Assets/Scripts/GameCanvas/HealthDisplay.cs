@@ -1,21 +1,14 @@
 ﻿using UnityEngine;
 using WebSocketSharp;
 
-public class HealthDisplay : TwoValueDisplay<IntegerReference>
+public class HealthDisplay : ValueDisplay<IntegerReference>
 {
     [SerializeField] private string stringBeforeValue = "";
-
-    public override void RefreshDisplay()
+    
+    public override void RefreshDisplay(string newFirstValue)
     {
-        RefreshDisplay<int>(value, secondValue);
-    }
-
-    public override void RefreshDisplay<TV>(TV newFirstValue, TV newSecondValue)
-    {
-        base.RefreshDisplay(newFirstValue, newSecondValue);
-        if (!stringBeforeValue.IsNullOrEmpty())
-        {
-            label.text = stringBeforeValue + label.text;
-        }
+        base.RefreshDisplay(newFirstValue);
+        if (stringBeforeValue.IsNullOrEmpty()) return;
+        label.text = stringBeforeValue + label.text;
     }
 }

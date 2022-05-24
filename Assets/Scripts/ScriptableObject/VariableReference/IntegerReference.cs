@@ -4,11 +4,8 @@ using UnityEngine;
 [Serializable]
 public class IntegerReference : VariableReference<int, IntegerVariable>
 {
-    public IntegerReference() : base()
+    public override string ToString()
     {
-    }
-
-    public IntegerReference(int value) : base(value)
-    {
+        return reference.Value.ToString();
     }
 }

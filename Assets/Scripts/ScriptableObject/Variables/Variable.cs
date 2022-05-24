@@ -2,11 +2,8 @@
 using UnityEngine;
 
 [Serializable]
-public class Variable<T> : ScriptableObject
+public class Variable<T> : Constant<T>
 {
-    [Multiline] [SerializeField] private string developerDescription;
-    [SerializeField] protected T value;
-    
     [SerializeField] private GameEvent valueChangeEvent;
 
     public void SetValue(T newValue)
@@ -28,6 +25,4 @@ public class Variable<T> : ScriptableObject
             valueChangeEvent.Raise();
         }
     }
-
-    public T Value => value;
 }

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PhotonView))]
-public class HealthPhoton : Health<IntegerVariable, IntegerReference>
+public class HealthPhoton : Health<IntegerVariable, IntegerConstant>
 {
     protected PhotonView PhotonView;
 
@@ -13,15 +13,15 @@ public class HealthPhoton : Health<IntegerVariable, IntegerReference>
 
     protected override void Start()
     {
-        if(!PhotonView.IsMine) return;
+        if (!PhotonView.IsMine) return;
         value.SetValue(maxValue);
     }
 
     [PunRPC]
     public override void RecordDamage(int damage)
     {
-        if(!PhotonView.IsMine) return;
-        value.ApplyChange(-damage);
+        if (!PhotonView.IsMine) return;
+        value.SetValue(value - damage);
     }
 
     public override void CheckValue()

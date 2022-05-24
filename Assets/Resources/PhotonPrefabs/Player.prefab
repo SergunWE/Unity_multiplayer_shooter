@@ -598,6 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 922227916169417352}
   - component: {fileID: 2683928821860291259}
+  - component: {fileID: 6568482190319265266}
   m_Layer: 0
   m_Name: HealthEventListener
   m_TagString: Untagged
@@ -636,6 +637,33 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7441415247598687017}
+        m_MethodName: CheckValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6568482190319265266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761764096880626718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64df300bec165274fb113cb36fcd7e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a7ff2400e07afe74e8afe8ab20edb63e, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1416224490051869263}
         m_MethodName: CheckValue
         m_Mode: 1
         m_Arguments:
@@ -941,10 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: {fileID: 11400000, guid: bf2e31f20371dde4dbf4f33d5d619dad, type: 2}
-  maxValue:
-    reference: {fileID: 11400000, guid: fb4cfc7c36db5ba489414d309a6092c6, type: 2}
-    constantValue: 0
-    useConstant: 0
+  maxValue: {fileID: 11400000, guid: 3f404844509391a4da6b737a0aff64f2, type: 2}
   onPlayerDied: {fileID: 11400000, guid: 5da912cd82a2567409cb7fe6e221e562, type: 2}
 --- !u!114 &7847354791243710903
 MonoBehaviour:
@@ -1414,10 +1439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: {fileID: 11400000, guid: 4ef1e942a22d3ed49b540a102e3b75fb, type: 2}
-  maxValue:
-    reference: {fileID: 11400000, guid: 16871d87eeb286d44b6473ea76a4d7b0, type: 2}
-    constantValue: 0
-    useConstant: 0
+  maxValue: {fileID: 11400000, guid: aee3a40de91389442a97704838efd5a5, type: 2}
   onShieldDestroyed: {fileID: 11400000, guid: 09babf7e8c4c2f742bc6ac331f1ce7fc, type: 2}
 --- !u!114 &2308343709508766270
 MonoBehaviour:

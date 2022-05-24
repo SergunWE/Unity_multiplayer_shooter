@@ -13,7 +13,8 @@ public class HealthShield : HealthPhoton
     }
 
     protected override void Death()
-    { 
+    {
+        Debug.Log("ShieldDead");
         onShieldDestroyed.Raise();
     }
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Weapon Options/New Delays")]
-public class WeaponDelays : ScriptableObject
+public class WeaponDelays : UnityEngine.ScriptableObject
 {
     [SerializeField] private float pulling;
     [SerializeField] private float shoot;

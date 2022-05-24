@@ -2,10 +2,10 @@
 using UnityEngine;
 
 [Serializable]
-public abstract class Health<T, M> : MonoBehaviour
+public abstract class Health<T, TM> : MonoBehaviour
 {
     [SerializeField] protected T value;
-    [SerializeField] protected M maxValue;
+    [SerializeField] protected TM maxValue;
 
     protected abstract void Start();
     public abstract void RecordDamage(int damage);

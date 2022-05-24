@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: PlayerHP
   m_EditorClassIdentifier: 
   developerDescription: 
-  value: 50
+  value: 40
   valueChangeEvent: {fileID: 11400000, guid: a7860e31bacca964d9335a9962693913, type: 2}
-  valuePositiveChangeEvent: {fileID: 0}
-  valueNegativeChangeEvent: {fileID: 0}

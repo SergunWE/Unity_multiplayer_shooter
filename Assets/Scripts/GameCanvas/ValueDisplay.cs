@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ValueDisplay<T> : MonoBehaviour
@@ -10,11 +8,11 @@ public class ValueDisplay<T> : MonoBehaviour
 
     public virtual void RefreshDisplay()
     {
-        RefreshDisplay(value);
+        RefreshDisplay(value.ToString());
     }
 
-    public void RefreshDisplay(T newValue)
+    public virtual void RefreshDisplay(string newValue)
     {
-        label.text = newValue.ToString();
+        label.text = newValue;
     }
 }

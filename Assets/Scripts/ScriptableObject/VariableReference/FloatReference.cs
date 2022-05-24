@@ -1,14 +1,12 @@
 ﻿using System;
+using System.Globalization;
 using UnityEngine;
 
 [Serializable]
 public class FloatReference : VariableReference<float, FloatVariable>
 {
-    public FloatReference() : base()
+    public override string ToString()
     {
-    }
-
-    public FloatReference(float value) : base(value)
-    {
+        return reference.Value.ToString(CultureInfo.InvariantCulture);
     }
 }
