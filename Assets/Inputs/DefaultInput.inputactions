@@ -158,7 +158,7 @@
             "id": "e5d2e1e7-f8c7-4b09-ace3-0638fd78a7fc",
             "actions": [
                 {
-                    "name": "Select first gun",
+                    "name": "FirstGun",
                     "type": "Button",
                     "id": "3f4a743f-ea91-4be4-a40d-b29873bd7253",
                     "expectedControlType": "Button",
@@ -167,7 +167,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Select second gun",
+                    "name": "SecondGun",
                     "type": "Button",
                     "id": "33dff360-e0cd-4ef3-b4eb-fddc5d24b0af",
                     "expectedControlType": "Button",
@@ -176,7 +176,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Select gun with scroll",
+                    "name": "Scroll",
                     "type": "Value",
                     "id": "3f7674ef-c676-4f50-996b-1f96a43e7ec6",
                     "expectedControlType": "Axis",
@@ -220,7 +220,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Select second gun",
+                    "action": "SecondGun",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -231,7 +231,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Select gun with scroll",
+                    "action": "Scroll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -253,7 +253,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Select first gun",
+                    "action": "FirstGun",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

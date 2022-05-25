@@ -850,7 +850,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'S: 100/100'
+  m_Text: 'S: 100'
 --- !u!1 &8041452371060711708
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,14 +990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     reference: {fileID: 11400000, guid: bf2e31f20371dde4dbf4f33d5d619dad, type: 2}
-    constantValue: 0
-    useConstant: 0
   label: {fileID: 2820021938956413928}
-  secondValue:
-    reference: {fileID: 11400000, guid: fb4cfc7c36db5ba489414d309a6092c6, type: 2}
-    constantValue: 0
-    useConstant: 0
-  valueBaffle: 47
   stringBeforeValue: 'H: '
 --- !u!1 &8476972492213260732
 GameObject:
@@ -1076,7 +1069,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'H: 100/100'
+  m_Text: 'H: 100'
 --- !u!1 &8607559708627139317
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,14 +1389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     reference: {fileID: 11400000, guid: 4ef1e942a22d3ed49b540a102e3b75fb, type: 2}
-    constantValue: 0
-    useConstant: 0
   label: {fileID: 2517270178075650620}
-  secondValue:
-    reference: {fileID: 11400000, guid: 16871d87eeb286d44b6473ea76a4d7b0, type: 2}
-    constantValue: 0
-    useConstant: 0
-  valueBaffle: 47
   stringBeforeValue: 'S: '
 --- !u!1 &8757896752165877573
 GameObject:
@@ -1670,11 +1656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     reference: {fileID: 0}
-    constantValue: 0
-    useConstant: 1
   label: {fileID: 8998153142098036298}
   secondValue:
     reference: {fileID: 0}
-    constantValue: 0
-    useConstant: 1
   valueBaffle: 47

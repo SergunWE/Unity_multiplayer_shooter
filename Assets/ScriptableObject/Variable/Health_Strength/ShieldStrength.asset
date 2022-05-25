@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e66d1261e174884a7d6d41859bd337f, type: 3}
-  m_Name: WeaponName
+  m_Script: {fileID: 11500000, guid: 4f840d1c3b4946179c671038d0b07949, type: 3}
+  m_Name: ShieldStrength
   m_EditorClassIdentifier: 
   developerDescription: 
-  value: Example
-  valueChangeEvent: {fileID: 0}
+  value: 500
+  valueChangeEvent: {fileID: 11400000, guid: a7ff2400e07afe74e8afe8ab20edb63e, type: 2}

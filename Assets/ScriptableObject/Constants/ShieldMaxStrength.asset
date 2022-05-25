@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f840d1c3b4946179c671038d0b07949, type: 3}
-  m_Name: ShieldHP
+  m_Script: {fileID: 11500000, guid: 6ab88bd29a824008ac65316eab786a92, type: 3}
+  m_Name: ShieldMaxStrength
   m_EditorClassIdentifier: 
-  developerDescription: 
+  developerDescription: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F
+    \u043F\u0440\u043E\u0447\u043D\u043E\u0441\u0442\u044C"
   value: 500
-  valueChangeEvent: {fileID: 11400000, guid: a7ff2400e07afe74e8afe8ab20edb63e, type: 2}

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
+[CreateAssetMenu(menuName = "Variable/Integer")]
 public class IntegerVariable : Variable<int>
 {
     

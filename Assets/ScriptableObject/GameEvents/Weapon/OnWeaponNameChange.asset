@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00bc615811c02c04b8c9bd268dd0eacf, type: 3}
-  m_Name: OnShieldHPChange
+  m_Name: OnWeaponNameChange
   m_EditorClassIdentifier: 
