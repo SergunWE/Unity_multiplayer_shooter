@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab88bd29a824008ac65316eab786a92, type: 3}
   m_Name: PlayerMaxHP
   m_EditorClassIdentifier: 
-  developerDescription: 
+  developerDescription: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435
+    \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u0435 \u0438\u0433\u0440\u043E\u043A\u0430"
   value: 100

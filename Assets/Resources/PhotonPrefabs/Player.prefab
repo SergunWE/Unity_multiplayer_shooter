@@ -1038,13 +1038,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponsParent: {fileID: 1471127564306454178}
   onWeaponChange: {fileID: 11400000, guid: 71660256e190e54439b7517f9e53a682, type: 2}
-  onWeaponPulling: {fileID: 11400000, guid: 36119f5e8fd2540419122eace33584d1, type: 2}
-  onWeaponReady: {fileID: 11400000, guid: 9a1fd1618633a2345a7b9a617bc1da1b, type: 2}
-  onWeaponUse: {fileID: 11400000, guid: 2eebc2550afe782448633e42a79e608e, type: 2}
-  onWeaponAlternateUse: {fileID: 11400000, guid: 451588bf920ff564ea2c0e9977eeaf1f,
-    type: 2}
-  onWeaponReload: {fileID: 11400000, guid: 34ad056512ce45d4fbd3f9d7e1a0b95a, type: 2}
-  onAmmunitionUpdate: {fileID: 11400000, guid: 249443c8d2503064f8b14ccdffde3564, type: 2}
+  weaponGameEvents: {fileID: 11400000, guid: 320a115613f150c4aaf13ebd8480fb16, type: 2}
+  clipBullet: {fileID: 11400000, guid: e529e7c4749d0e74294ffee4eb6e64c2, type: 2}
+  totalBullet: {fileID: 11400000, guid: 98497410eeebb904fb10b7076cad90d5, type: 2}
+  weaponName: {fileID: 11400000, guid: 342d21b806ecce648ae1c7344ee04e26, type: 2}
 --- !u!1 &4730742999467326086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,7 +3034,7 @@ GameObject:
   - component: {fileID: 4765426242868806850}
   - component: {fileID: 6627516536598894567}
   - component: {fileID: 1934214059709830856}
-  - component: {fileID: 5709178645649272462}
+  - component: {fileID: 7507041073475058231}
   m_Layer: 0
   m_Name: WeaponEventListener
   m_TagString: Untagged
@@ -3071,12 +3068,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64df300bec165274fb113cb36fcd7e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 249443c8d2503064f8b14ccdffde3564, type: 2}
+  gameEvent: {fileID: 11400000, guid: 1eb7fa27cee39a545ac18daa245f57e0, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3877433160112221364}
-        m_MethodName: OnAmmunitionUpdate
+        m_MethodName: OnTotalBulletUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3877433160112221364}
+        m_MethodName: OnClipBulletUpdate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3113,7 +3121,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5709178645649272462
+      - m_Target: {fileID: 3877433160112221364}
+        m_MethodName: OnClipBulletUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7507041073475058231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3125,10 +3144,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64df300bec165274fb113cb36fcd7e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 11176b386c7ee4141a22a300c88a09ac, type: 2}
+  gameEvent: {fileID: 11400000, guid: 36119f5e8fd2540419122eace33584d1, type: 2}
   response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3877433160112221364}
+        m_MethodName: OnClipBulletUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Pulling
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3877433160112221364}
+        m_MethodName: OnTotalBulletUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9137571923133145319
 GameObject:
   m_ObjectHideFlags: 0

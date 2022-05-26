@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f840d1c3b4946179c671038d0b07949, type: 3}
-  m_Name: ShieldStrength
+  m_Name: WeaponTotalBullet
   m_EditorClassIdentifier: 
-  developerDescription: "\u0422\u0435\u043A\u0443\u0449\u0430\u044F \u043F\u0440\u043E\u0447\u043D\u043E\u0441\u0442\u044C
-    \u0449\u0438\u0442\u0430"
-  value: 500
-  valueChangeEvent: {fileID: 11400000, guid: a7ff2400e07afe74e8afe8ab20edb63e, type: 2}
+  developerDescription: "\u041E\u0431\u0449\u0435\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E
+    \u043F\u0443\u043B\u044C \u043E\u0440\u0443\u0436\u0438\u044F"
+  value: 50
+  valueChangeEvent: {fileID: 11400000, guid: f5696f3530ebca34c96769f520770737, type: 2}

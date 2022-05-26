@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f840d1c3b4946179c671038d0b07949, type: 3}
   m_Name: PlayerHP
   m_EditorClassIdentifier: 
-  developerDescription: 
+  developerDescription: "\u0422\u0435\u043A\u0443\u0449\u0435\u0435 \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u0435
+    \u0438\u0433\u0440\u043E\u043A\u0430"
   value: 40
   valueChangeEvent: {fileID: 11400000, guid: a7860e31bacca964d9335a9962693913, type: 2}

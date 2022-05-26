@@ -7,8 +7,6 @@ public class WeaponShotCalculation : MonoBehaviour
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private Transform shotPoint;
 
-    [SerializeField] private GameEvent onWeaponCalculateShot;
-
     private WeaponInfo _currentWeapon;
     private WeaponDamage _weaponDamage;
 
@@ -50,15 +48,13 @@ public class WeaponShotCalculation : MonoBehaviour
             Vector3 deviation3D = Random.insideUnitCircle * 5f;
             Quaternion rot = Quaternion.LookRotation(Vector3.forward * 100 + deviation3D);
             _shotPointForward = _shotPointRotation * rot * Vector3.forward;
-            
+
             _shotColor = Color.yellow;
             if (CalculateShot())
             {
                 DrawLine(_shotColor);
                 InflictDamage();
             }
-            
-            
         }
     }
 
@@ -81,7 +77,7 @@ public class WeaponShotCalculation : MonoBehaviour
             Debug.LogError("No hit was detected");
             return;
         }
-        
+
         if (_shotDistance >= 0)
         {
             int damage = _calculateDamage.GetDamageValue(_currentWeapon.Damage, _shotDistance);
@@ -92,8 +88,6 @@ public class WeaponShotCalculation : MonoBehaviour
         {
             _hit.transform.gameObject.GetComponent<Damaged>()?.TakeDamage(_currentWeapon.Damage.BaseDamage);
         }
-
-        
     }
 
     private void RefreshTransform()
@@ -120,12 +114,10 @@ public class WeaponShotCalculation : MonoBehaviour
         _shotDistance = _shotMaxDistance;
         if (!CheckHit())
         {
-            onWeaponCalculateShot.Raise();
             return false;
         }
-        _shotDistance = (int)Vector3.Distance(_shotPointPosition, _hit.point);
-        onWeaponCalculateShot.Raise();
-        
+
+        _shotDistance = (int) Vector3.Distance(_shotPointPosition, _hit.point);
         return true;
     }
 
@@ -135,6 +127,7 @@ public class WeaponShotCalculation : MonoBehaviour
         {
             return _shotPointForward * 10;
         }
+
         return _hit.point;
     }
 
@@ -145,7 +138,7 @@ public class WeaponShotCalculation : MonoBehaviour
     public void OnWeaponUse()
     {
         RefreshTransform();
-        
+
         _currentWeapon = weaponManager.CurrentWeaponInfo;
         switch (_currentWeapon.Type)
         {

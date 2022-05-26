@@ -13,12 +13,12 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private GameObject weaponsParent;
 
     [SerializeField] private GameEvent onWeaponChange;
-    [SerializeField] private GameEvent onWeaponPulling;
-    [SerializeField] private GameEvent onWeaponReady;
-    [SerializeField] private GameEvent onWeaponUse;
-    [SerializeField] private GameEvent onWeaponAlternateUse;
-    [SerializeField] private GameEvent onWeaponReload;
-    [SerializeField] private GameEvent onAmmunitionUpdate;
+    [SerializeField] private WeaponGameEvents weaponGameEvents;
+
+    [SerializeField] private IntegerVariable clipBullet;
+    [SerializeField] private IntegerVariable totalBullet;
+
+    [SerializeField] private StringVariable weaponName;
 
     private Weapon _currentWeapon;
 
@@ -46,8 +46,8 @@ public class WeaponManager : MonoBehaviour
         _currentWeaponIndex = index;
         _currentWeapon = _weapons[index];
         _currentWeapon.ShowWeapon();
-        
-        OnAmmunitionUpdate();
+        OnClipBulletUpdate();
+        OnTotalBulletUpdate();
         WeaponNameUpdate();
         onWeaponChange.Raise();
     }
@@ -80,21 +80,14 @@ public class WeaponManager : MonoBehaviour
     {
         _weapons = weaponsParent.GetComponentsInChildren<Weapon>();
         Debug.Log("Всего оружия " + _weapons.Length);
-        
         if (_weapons == null) return;
-        _weapons[0].SetOnWeaponPulling(onWeaponPulling);
-        _weapons[0].SetOnWeaponReady(onWeaponReady);
-        _weapons[0].SetOnWeaponUse(onWeaponUse);
-        _weapons[0].SetOnWeaponAlternateUse(onWeaponAlternateUse);
-        _weapons[0].SetOnWeaponReload(onWeaponReload);
-        _weapons[0].SetOnAmmunitionUpdate(onAmmunitionUpdate);
-
+        _weapons[0].SetWeaponGameEvents(weaponGameEvents);
         _currentWeapon = _weapons[0];
     }
 
     private void WeaponNameUpdate()
     {
-        GameCanvas.Instance.UpdateWeaponName(_currentWeapon.WeaponInfo.ItemName);
+        weaponName.SetValue(_currentWeapon.WeaponInfo.ItemName);
     }
 
     #region InputEvent
@@ -103,7 +96,7 @@ public class WeaponManager : MonoBehaviour
     {
         if (!context.performed) return;
         int axis = (int) context.ReadValue<float>();
-        if (axis > 0)
+        if (axis > 0.0)
         {
             NextWeapon();
         }
@@ -157,10 +150,14 @@ public class WeaponManager : MonoBehaviour
 
     #region GameEvent
 
-    public void OnAmmunitionUpdate()
+    public void OnClipBulletUpdate()
     {
-        GameCanvas.Instance.UpdateAmmunition(_currentWeapon.CurrentClip,
-            _currentWeapon.CurrentTotal);
+        clipBullet.SetValue(_weapons[_currentWeaponIndex].CurrentClip);
+    }
+
+    public void OnTotalBulletUpdate()
+    {
+        totalBullet.SetValue(_weapons[_currentWeaponIndex].CurrentTotal);
     }
 
     #endregion

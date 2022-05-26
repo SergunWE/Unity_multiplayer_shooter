@@ -1,5 +1,3 @@
-﻿
-public class WeaponStatusDisplay : ValueDisplay<string>
+﻿public class WeaponStatusDisplay : ValueDisplay<string>
 {
-    
 }

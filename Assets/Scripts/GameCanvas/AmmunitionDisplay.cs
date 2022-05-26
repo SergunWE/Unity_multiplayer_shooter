@@ -1,4 +1,6 @@
-﻿public class AmmunitionDisplay : TwoValueDisplay<IntegerReference>
+﻿using UnityEngine;
+using UnityEngine.UI;
+
+public class AmmunitionDisplay : ValueDisplay<IntegerReference>
 {
-    
 }

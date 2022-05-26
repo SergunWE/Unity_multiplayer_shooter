@@ -6,67 +6,124 @@ using UnityEngine;
 public abstract class Weapon : Item
 {
     [SerializeField] protected WeaponInfo weaponInfo;
+    protected static WeaponGameEvents GameEvents;
+    private GameObject _weaponModelInGame;
 
-    protected bool _canUse;
+    protected Coroutine _startReloadingCoroutine;
+    private Coroutine _waitingCoroutine;
 
-    protected static GameEvent onWeaponPulling;
-    protected static GameEvent onWeaponReady;
-    protected static GameEvent onWeaponUse;
-    protected static GameEvent onWeaponAlternateUse;
-    protected static GameEvent onWeaponReload;
-    protected static GameEvent onAmmunitionUpdate;
-    
-    protected GameObject _weaponModelInGame;
-    
-    protected int _currentClip;
-    protected int _currentTotal;
+    public int CurrentClip { get; protected set; }
+    public int CurrentTotal { get; protected set; }
+
+    protected bool CanUse;
 
     protected virtual void Awake()
     {
         _weaponModelInGame = Instantiate(weaponInfo.Model.Model, transform);
 
-        _currentClip = weaponInfo.Ammunition.Clip;
-        _currentTotal = weaponInfo.Ammunition.Total;
+        CurrentClip = weaponInfo.Ammunition.Clip;
+        CurrentTotal = weaponInfo.Ammunition.Total;
     }
 
     public abstract override void Use();
-    public override void AlternateUse() {}
-    public abstract void ShowWeapon();
-    public abstract void HideWeapon();
-    public virtual void UnUse() {}
-    public virtual void Reload() {}
-    
-    public int CurrentClip => _currentClip;
-    public int CurrentTotal => _currentTotal;
+
+    public virtual void UnUse()
+    {
+    }
+
+    public override void AlternateUse()
+    {
+    }
+
+    public void SetWeaponGameEvents(WeaponGameEvents events)
+    {
+        GameEvents = events;
+    }
+
+    public virtual void ShowWeapon()
+    {
+        _weaponModelInGame.SetActive(true);
+        GameEvents.OnWeaponPulling();
+        Waiting(weaponInfo.Delays.Pulling);
+    }
+
+    public virtual void HideWeapon()
+    {
+        CanUse = false;
+        _weaponModelInGame.SetActive(false);
+        StopAllCoroutines();
+        _startReloadingCoroutine = null;
+        _waitingCoroutine = null;
+    }
+
+
     public WeaponInfo WeaponInfo => weaponInfo;
 
-    public void SetOnWeaponPulling(GameEvent gameEvent)
+    protected void Waiting(float delay)
     {
-        onWeaponPulling = gameEvent;
+        if (_waitingCoroutine == null)
+        {
+            _waitingCoroutine = StartCoroutine(WaitingCoroutine(delay));
+        }
     }
-    
-    public void SetOnWeaponUse(GameEvent gameEvent)
+
+    private void StartReloading()
     {
-        onWeaponUse = gameEvent;
+        if (_startReloadingCoroutine == null)
+        {
+            GameEvents.OnWeaponReload();
+            _startReloadingCoroutine = StartCoroutine(StartReloadingCoroutine());
+        }
     }
-    
-    public void SetOnWeaponAlternateUse(GameEvent gameEvent)
+
+    private IEnumerator WaitingCoroutine(float delay)
     {
-        onWeaponAlternateUse = gameEvent;
+        CanUse = false;
+        yield return new WaitForSeconds(delay);
+        CanUse = true;
+        GameEvents.OnWeaponReady();
+        _waitingCoroutine = null;
     }
-    
-    public void SetOnWeaponReload(GameEvent gameEvent)
+
+    protected virtual IEnumerator StartReloadingCoroutine()
     {
-        onWeaponReload = gameEvent;
+        if (_waitingCoroutine != null)
+        {
+            StopCoroutine(_waitingCoroutine);
+            _waitingCoroutine = null;
+        }
+
+        CanUse = false;
+        yield return new WaitForSeconds(weaponInfo.Delays.Reload - weaponInfo.Delays.Pulling);
+        ReplaceClip();
+        yield return StartCoroutine(WaitingCoroutine(weaponInfo.Delays.Pulling));
+        _startReloadingCoroutine = null;
     }
-    
-    public void SetOnWeaponReady(GameEvent gameEvent)
+
+    protected virtual void ReplaceClip()
     {
-        onWeaponReady = gameEvent;
+        int cartridgesRequired = weaponInfo.Ammunition.Clip - CurrentClip;
+        int cartridgesSpentReloading = Math.Min(cartridgesRequired, CurrentTotal);
+        CurrentClip += cartridgesSpentReloading;
+        CurrentTotal -= cartridgesSpentReloading;
+        GameEvents.OnWeaponClipReplaced();
     }
-    
-    public void SetOnAmmunitionUpdate(GameEvent gameEvent)
+
+    protected virtual void Shoot()
     {
-        onAmmunitionUpdate = gameEvent;
+        if (!CanUse || CurrentClip <= 0) return;
+        CurrentClip--;
+        GameEvents.OnWeaponUse();
+        Waiting(weaponInfo.Delays.Shoot);
+    }
+
+    public virtual void Reload()
+    {
+        if (!CanUse) return;
+        if (CurrentClip == weaponInfo.Ammunition.Clip || CurrentTotal <= 0) return;
+        if (_startReloadingCoroutine == null)
+        {
+            StartReloading();
+        }
     }
 }

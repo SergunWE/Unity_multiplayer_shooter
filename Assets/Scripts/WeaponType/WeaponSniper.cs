@@ -6,25 +6,22 @@ public class WeaponSniper : WeaponNonAutomatic
 
     public override void AlternateUse()
     {
-        if(!_canUse) return;
+        if(!CanUse) return;
         _inScope = !_inScope;
-
-        if (_inScope)
-        {
-            onWeaponAlternateUse.Raise();
-            Debug.Log("Sniper scope");
-        }
+        if (!_inScope) return;
+        GameEvents.OnWeaponAlternateUse();
+        Debug.Log("Sniper scope");
     }
 
     public override void ShowWeapon()
     {
-        base.ShowWeapon();
         _inScope = false;
+        base.ShowWeapon();
     }
 
     public override void HideWeapon()
     {
-        base.HideWeapon();
         _inScope = false;
+        base.HideWeapon();
     }
 }

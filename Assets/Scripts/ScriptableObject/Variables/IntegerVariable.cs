@@ -1,8 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Variable/Integer")]
 public class IntegerVariable : Variable<int>
 {
-    
 }

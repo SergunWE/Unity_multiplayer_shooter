@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f9efa6327040f4986036c16255c395, type: 3}
+  m_Name: Weapon Game Events
+  m_EditorClassIdentifier: 
+  onWeaponPulling: {fileID: 11400000, guid: 36119f5e8fd2540419122eace33584d1, type: 2}
+  onWeaponReady: {fileID: 11400000, guid: 9a1fd1618633a2345a7b9a617bc1da1b, type: 2}
+  onWeaponUse: {fileID: 11400000, guid: 2eebc2550afe782448633e42a79e608e, type: 2}
+  onWeaponAlternateUse: {fileID: 11400000, guid: 451588bf920ff564ea2c0e9977eeaf1f,
+    type: 2}
+  onWeaponReload: {fileID: 11400000, guid: 34ad056512ce45d4fbd3f9d7e1a0b95a, type: 2}
+  onWeaponClipReplaced: {fileID: 11400000, guid: 1eb7fa27cee39a545ac18daa245f57e0,
+    type: 2}
