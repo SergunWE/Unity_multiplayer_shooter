@@ -2579,7 +2579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positiveStateEvent: {fileID: 11400000, guid: ab85d84dc62e9944ab5fa7f62440e9c5, type: 2}
   negativeStateEvent: {fileID: 11400000, guid: 816ef356e55d0d84ba80f9f4cceac44e, type: 2}
-  maxSlopeAngle: 55
+  maxSlopeAngle: 50
   surfaceDetectionDistance: 1.2
   groundMask:
     serializedVersion: 2

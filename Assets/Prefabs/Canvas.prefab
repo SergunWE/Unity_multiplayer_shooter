@@ -1437,7 +1437,6 @@ GameObject:
   - component: {fileID: 8607559708627139312}
   - component: {fileID: 8607559708627139319}
   - component: {fileID: 8607559708627139318}
-  - component: {fileID: 5053705040444605297}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1531,20 +1530,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5053705040444605297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8607559708627139317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7578e2f67a132ad4693573ef9372f612, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammunitionDisplay: {fileID: 0}
-  weaponStatusDisplay: {fileID: 728758593140259638}
 --- !u!1 &8607559708989394172
 GameObject:
   m_ObjectHideFlags: 0

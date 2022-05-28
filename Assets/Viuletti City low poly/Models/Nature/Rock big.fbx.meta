@@ -24,7 +24,17 @@ ModelImporter:
   - first:
       43: 4300000
     second: Rock big
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock
+    second: {fileID: 2100000, guid: b9154e1d6dcfe574f8fecd4de6335584, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock light
+    second: {fileID: 2100000, guid: b98ca9cc9f3024d499d4c783fc3d7d05, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

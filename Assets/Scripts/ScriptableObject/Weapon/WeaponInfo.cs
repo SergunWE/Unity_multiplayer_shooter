@@ -20,7 +20,7 @@ public class WeaponInfo : ItemInfo
     public WeaponModel Model => model;
     public WeaponType Type => type;
 
-    public Type GetFiringModeScript()
+    public Type GetFiringMode()
     {
         switch (firingMode)
         {

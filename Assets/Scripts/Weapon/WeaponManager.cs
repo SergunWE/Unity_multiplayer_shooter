@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class WeaponManager : MonoBehaviour
 {
-    private List<Weapon> _weapons = new List<Weapon>();
+    private readonly List<Weapon> _weapons = new List<Weapon>();
     private int _currentWeaponIndex = 0;
 
     [SerializeField] private Transform weaponsParent;
@@ -51,10 +51,12 @@ public class WeaponManager : MonoBehaviour
         _currentWeaponIndex = index;
         _currentWeapon = _weapons[index];
         _currentWeapon.ShowWeapon();
+        
+        onWeaponChange.Raise();
+        
         OnClipBulletUpdate();
         OnTotalBulletUpdate();
         WeaponNameUpdate();
-        onWeaponChange.Raise();
     }
 
     private void NextWeapon()
@@ -85,7 +87,7 @@ public class WeaponManager : MonoBehaviour
     {
         var weaponObject = Instantiate(new GameObject(), weaponsParent.transform).gameObject;
         weaponObject.name = info.ItemName;
-        Type firingMode = info.GetFiringModeScript();
+        Type firingMode = info.GetFiringMode();
         var weapon = weaponObject.AddComponent(firingMode).GetComponent<Weapon>();
         weapon.SetWeaponInfo(info);
         _weapons.Add(weapon);
