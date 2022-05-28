@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
@@ -115,13 +116,8 @@ public class Launcher : MonoBehaviourPunCallbacks
             Destroy(room.gameObject);
         }
 
-        foreach (var room in roomList)
+        foreach (var room in roomList.Where(room => !room.RemovedFromList))
         {
-            if (room.RemovedFromList)
-            {
-                continue;
-            }
-
             Instantiate(roomListItemPrefab, roomListContent).GetComponent<RoomListItem>().SetUp(room);
         }
     }
