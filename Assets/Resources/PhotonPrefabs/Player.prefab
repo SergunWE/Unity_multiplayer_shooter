@@ -542,8 +542,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponManager: {fileID: 3877433160112221364}
   shotPoint: {fileID: 6862892531029742901}
-  onWeaponCalculateShot: {fileID: 11400000, guid: 11176b386c7ee4141a22a300c88a09ac,
-    type: 2}
 --- !u!1 &2575161666417892246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,8 +1619,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8013550027772760960}
-        m_MethodName: OnMovement
+      - m_Target: {fileID: 11400000, guid: a88f9b573d997c8408d9a84e9f1dd3be, type: 2}
+        m_MethodName: SetValue
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1637,17 +1635,6 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5139832417320845750}
-        m_MethodName: OnView
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
         m_MethodName: OnView
         m_Mode: 0
         m_Arguments:
@@ -1971,6 +1958,7 @@ GameObject:
   - component: {fileID: 259961755918049667}
   - component: {fileID: 7639879449898935856}
   - component: {fileID: 21126195378363641}
+  - component: {fileID: 5851232030964209}
   m_Layer: 0
   m_Name: PlayerControlEventListener
   m_TagString: Untagged
@@ -2304,6 +2292,33 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 6838061873195615110}
         m_MethodName: OnPlayerStandUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5851232030964209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862892530478573843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64df300bec165274fb113cb36fcd7e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e5d804f0a7fa235479fbdd553026675e, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8013550027772760960}
+        m_MethodName: OnMovementChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3023,6 +3038,8 @@ MonoBehaviour:
   slopeChecker: {fileID: 4351445867778670264}
   sprintSpeedMultiplier: 1.5
   crouchSpeedMultiplier: 0.3
+  movementAxis:
+    reference: {fileID: 11400000, guid: a88f9b573d997c8408d9a84e9f1dd3be, type: 2}
 --- !u!1 &8814173412802611817
 GameObject:
   m_ObjectHideFlags: 0

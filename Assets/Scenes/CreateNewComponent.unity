@@ -2045,6 +2045,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8607559708627139312, guid: 0b376b44768d5244aa61a930b9e3d800,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607559708627139312, guid: 0b376b44768d5244aa61a930b9e3d800,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8607559708627139313, guid: 0b376b44768d5244aa61a930b9e3d800,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2088,6 +2098,21 @@ PrefabInstance:
     - target: {fileID: 8607559708627139313, guid: 0b376b44768d5244aa61a930b9e3d800,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607559708627139313, guid: 0b376b44768d5244aa61a930b9e3d800,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607559708627139313, guid: 0b376b44768d5244aa61a930b9e3d800,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607559708627139313, guid: 0b376b44768d5244aa61a930b9e3d800,
+        type: 3}
+      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8607559708627139313, guid: 0b376b44768d5244aa61a930b9e3d800,
@@ -2155,5 +2180,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5053705040444605297, guid: 0b376b44768d5244aa61a930b9e3d800, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0b376b44768d5244aa61a930b9e3d800, type: 3}

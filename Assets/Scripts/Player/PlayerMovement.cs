@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
     [SerializeField] private float sprintSpeedMultiplier;
     [SerializeField] private float crouchSpeedMultiplier;
 
+    [SerializeField] private Vector2Reference movementAxis; 
+
 
     private Vector2 _inputAxis = Vector2.zero;
     private Vector3 _moveDirection;
@@ -50,7 +52,7 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
         {
             //Debug.Log("Slope");
             _rigidbody.AddForce(_movementSpeed * movementSpeedMultiplier * 
-                                slopeChecker.GetSlopeMoveDirection(_moveDirection), ForceMode.Force);
+                                slopeChecker.GetSlopeMoveDirection(_moveDirection), ForceMode.Acceleration);
         }
 
         else if (_isGrounded)
@@ -111,11 +113,6 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
 
     #region InputEvent
 
-    public void OnMovement(InputAction.CallbackContext context)
-    {
-        _inputAxis = context.ReadValue<Vector2>();
-    }
-
     public void OnSprint(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -136,6 +133,11 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
 
     #region GameEvent
 
+    public void OnMovementChange()
+    {
+        _inputAxis = movementAxis;
+    }
+    
     public void OnPlayerGround()
     {
         _isGrounded = true;
@@ -166,11 +168,6 @@ public class PlayerMovement : MonoBehaviour, ITrackingGroundChecker, ITrackingCr
 
     public void OnPlayerCrouches()
     {
-        // if (_isGrounded)
-        // {
-        //     _rigidbody.AddForce(Vector3.down * crouchImpulse, ForceMode.VelocityChange);
-        // }
-
         _isCrouched = true;
         SpeedChange();
     }
