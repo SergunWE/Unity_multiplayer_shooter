@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79da1aa6988f89c479e367010a1ac3f2, type: 3}
   m_Name: Shotgun_Super
   m_EditorClassIdentifier: 
-  baseDamage: 5
-  distanceDamageCoefficient: 0.5
+  baseDamage: 8
+  distanceDamageCoefficient: 0.7
   startInterval: 5
   endInterval: 30
   numberBullets: 10

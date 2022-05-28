@@ -17,8 +17,9 @@ public abstract class Weapon : Item
 
     protected bool CanUse;
 
-    protected virtual void Awake()
+    private void Awake()
     {
+        if (weaponInfo == null) return;
         _weaponModelInGame = Instantiate(weaponInfo.Model.Model, transform);
 
         CurrentClip = weaponInfo.Ammunition.Clip;
@@ -38,6 +39,12 @@ public abstract class Weapon : Item
     public void SetWeaponGameEvents(WeaponGameEvents events)
     {
         GameEvents = events;
+    }
+
+    public void SetWeaponInfo(WeaponInfo info)
+    {
+        weaponInfo = info;
+        Awake();
     }
 
     public virtual void ShowWeapon()

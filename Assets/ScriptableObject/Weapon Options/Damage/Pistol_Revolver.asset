@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79da1aa6988f89c479e367010a1ac3f2, type: 3}
   m_Name: Pistol_Revolver
   m_EditorClassIdentifier: 
-  baseDamage: 40
-  distanceDamageCoefficient: 0.6
+  baseDamage: 35
+  distanceDamageCoefficient: 0.7
   startInterval: 20
   endInterval: 110
   numberBullets: 1

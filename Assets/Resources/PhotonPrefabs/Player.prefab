@@ -61,7 +61,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4464955383199027641
 Transform:
   m_ObjectHideFlags: 0
@@ -469,7 +469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7407613904150922801
 Transform:
   m_ObjectHideFlags: 0
@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a753045d6a23c24a80ba3de77b3eb34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInfo: {fileID: 11400000, guid: 2256b9f2b573f8e45a82e7cfaf777b9b, type: 2}
+  weaponInfo: {fileID: 0}
 --- !u!1 &2280126850898502732
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2024324417871703009
 Transform:
   m_ObjectHideFlags: 0
@@ -688,7 +688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6381872389289923037
 Transform:
   m_ObjectHideFlags: 0
@@ -1034,12 +1034,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e578ec1aa8640a846bc4c2d66e1ab952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponsParent: {fileID: 1471127564306454178}
+  weaponsParent: {fileID: 345354874792840634}
   onWeaponChange: {fileID: 11400000, guid: 71660256e190e54439b7517f9e53a682, type: 2}
   weaponGameEvents: {fileID: 11400000, guid: 320a115613f150c4aaf13ebd8480fb16, type: 2}
   clipBullet: {fileID: 11400000, guid: e529e7c4749d0e74294ffee4eb6e64c2, type: 2}
   totalBullet: {fileID: 11400000, guid: 98497410eeebb904fb10b7076cad90d5, type: 2}
   weaponName: {fileID: 11400000, guid: 342d21b806ecce648ae1c7344ee04e26, type: 2}
+  firstWeapon: {fileID: 11400000, guid: 96fd8885c44dc59498126923ccc68ef4, type: 2}
+  secondWeapon: {fileID: 11400000, guid: e11b8c1827a1d1048a25e3e461e3abc1, type: 2}
 --- !u!1 &4730742999467326086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,7 +2707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6445019762036111892
 Transform:
   m_ObjectHideFlags: 0

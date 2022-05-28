@@ -17,3 +17,5 @@ MonoBehaviour:
   delays: {fileID: 11400000, guid: 491cad8b445a2484a8cbf633ebcb7dc0, type: 2}
   ammunition: {fileID: 11400000, guid: faa6c67257870554b887c23d9d17aad5, type: 2}
   model: {fileID: 11400000, guid: e9beffef52113cd4eb10ce3b59896042, type: 2}
+  type: 0
+  firingMode: 1

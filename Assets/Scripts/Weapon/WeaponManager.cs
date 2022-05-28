@@ -7,10 +7,10 @@ using UnityEngine.InputSystem;
 
 public class WeaponManager : MonoBehaviour
 {
-    private Weapon[] _weapons;
+    private List<Weapon> _weapons = new List<Weapon>();
     private int _currentWeaponIndex = 0;
 
-    [SerializeField] private GameObject weaponsParent;
+    [SerializeField] private Transform weaponsParent;
 
     [SerializeField] private GameEvent onWeaponChange;
     [SerializeField] private WeaponGameEvents weaponGameEvents;
@@ -19,12 +19,17 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private IntegerVariable totalBullet;
 
     [SerializeField] private StringVariable weaponName;
+    
+    [SerializeField] private WeaponPool firstWeapon;
+    [SerializeField] private WeaponPool secondWeapon;
+    
 
     private Weapon _currentWeapon;
 
     private void Awake()
     {
-        
+        CreateWeapon(firstWeapon.GetRandomWeaponInfo());
+        CreateWeapon(secondWeapon.GetRandomWeaponInfo());
     }
 
     private void Start()
@@ -40,7 +45,7 @@ public class WeaponManager : MonoBehaviour
 
     private void EquipWeapon(int index)
     {
-        if (index >= _weapons.Length || index < 0) return;
+        if (index >= _weapons.Count || index < 0) return;
 
         _currentWeapon.HideWeapon();
         _currentWeaponIndex = index;
@@ -54,7 +59,7 @@ public class WeaponManager : MonoBehaviour
 
     private void NextWeapon()
     {
-        if (_currentWeaponIndex >= _weapons.Length - 1)
+        if (_currentWeaponIndex >= _weapons.Count - 1)
         {
             EquipWeapon(0);
         }
@@ -68,7 +73,7 @@ public class WeaponManager : MonoBehaviour
     {
         if (_currentWeaponIndex <= 0)
         {
-            EquipWeapon(_weapons.Length - 1);
+            EquipWeapon(_weapons.Count - 1);
         }
         else
         {
@@ -76,11 +81,21 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    private void CreateWeapon(WeaponInfo info)
+    {
+        var weaponObject = Instantiate(new GameObject(), weaponsParent.transform).gameObject;
+        weaponObject.name = info.ItemName;
+        Type firingMode = info.GetFiringModeScript();
+        var weapon = weaponObject.AddComponent(firingMode).GetComponent<Weapon>();
+        weapon.SetWeaponInfo(info);
+        _weapons.Add(weapon);
+    }
+
     private void InitializeWeapon()
     {
-        _weapons = weaponsParent.GetComponentsInChildren<Weapon>();
-        Debug.Log("Всего оружия " + _weapons.Length);
-        if (_weapons == null) return;
+        //_weapons = weaponsParent.GetComponentsInChildren<Weapon>();
+        Debug.Log("Всего оружия " + _weapons.Count);
+        if (_weapons.Count == 0) return;
         _weapons[0].SetWeaponGameEvents(weaponGameEvents);
         _currentWeapon = _weapons[0];
     }

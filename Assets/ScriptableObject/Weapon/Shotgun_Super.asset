@@ -18,3 +18,4 @@ MonoBehaviour:
   ammunition: {fileID: 11400000, guid: a94f943592704654b81040eb48580b72, type: 2}
   model: {fileID: 11400000, guid: 0cec714397ca9884b99d1360a349eeca, type: 2}
   type: 1
+  firingMode: 2
