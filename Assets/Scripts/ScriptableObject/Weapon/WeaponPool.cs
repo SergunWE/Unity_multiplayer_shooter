@@ -9,10 +9,18 @@ public class WeaponPool : ScriptableObject
 
     private int _infoLength;
 
+     private void Awake()
+     {
+         _infoLength = weaponInfos.Length;
+     }
+
+#if UNITY_EDITOR
     private void OnValidate()
     {
         _infoLength = weaponInfos.Length;
     }
+#endif
+    
 
     public WeaponInfo GetRandomWeaponInfo()
     {

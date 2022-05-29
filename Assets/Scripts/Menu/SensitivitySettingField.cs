@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(TMP_InputField))]
 public class SensitivitySettingField : MonoBehaviour
 {
-    [SerializeField] private string playerPrefsName;
+    [SerializeField] private string playerPrefsKey;
 
     private TMP_InputField _field;
     private float _value;
@@ -35,7 +35,7 @@ public class SensitivitySettingField : MonoBehaviour
                 SetValueField();
                 return;
             }
-            PlayerPrefs.SetFloat(playerPrefsName, _value);
+            PlayerPrefs.SetFloat(playerPrefsKey, _value);
         }
         catch (Exception e)
         {
@@ -47,7 +47,7 @@ public class SensitivitySettingField : MonoBehaviour
 
     private float GetValue()
     {
-        return PlayerPrefs.GetFloat(playerPrefsName, 1.0f);
+        return PlayerPrefs.GetFloat(playerPrefsKey, 1.0f);
     }
 
     private void SetValueField()
