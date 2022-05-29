@@ -5,13 +5,6 @@ public class HealthShield : HealthPhoton
 {
     [SerializeField] private GameEvent onShieldDestroyed;
 
-    protected override void Start()
-    {
-        base.Start();
-        if(!PhotonView.IsMine) return;
-        //GameCanvas.Instance.UpdateShieldHealth(_value.Value, maxValue);
-    }
-
     protected override void Death()
     {
         Debug.Log("ShieldDead");
@@ -23,6 +16,5 @@ public class HealthShield : HealthPhoton
     {
         if(!PhotonView.IsMine) return;
         base.RecordDamage(damage);
-        //GameCanvas.Instance.UpdateShieldHealth(_value.Value, maxValue, ValueColor.ColorDamage);
     }
 }

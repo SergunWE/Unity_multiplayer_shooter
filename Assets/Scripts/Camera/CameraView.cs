@@ -16,7 +16,12 @@ public class CameraView : MonoBehaviour
     private float _yRotation = 0f;
 
     private Vector2 _inputAxis = Vector2.zero;
-    
+
+    private void Awake()
+    {
+        SetSensitivity();
+    }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -41,12 +46,22 @@ public class CameraView : MonoBehaviour
         
         _inputAxis = Vector2.zero;
     }
-    
+
+    private void SetSensitivity()
+    {
+        xSensitivity = PlayerPrefs.GetFloat("SensX", 1.0f);
+        ySensitivity = PlayerPrefs.GetFloat("SensY", 1.0f);
+    }
     
     public void OnView(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
         _inputAxis = context.ReadValue<Vector2>();
+    }
+
+    private void OnEnable()
+    {
+        SetSensitivity();
     }
 
     private void OnDestroy()

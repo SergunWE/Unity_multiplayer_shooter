@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     public static MenuManager Instance;
     
     [SerializeField] private Menu[] menus;
+    [SerializeField] private Menu backButton;
 
     private void Awake()
     {
@@ -41,8 +42,22 @@ public class MenuManager : MonoBehaviour
         menu.Open();
     }
 
-    private static void CloseMenu(Menu menu)
+    public void ShowBackButton()
+    {
+        if (!backButton.gameObject.activeSelf)
+        {
+            backButton.Open();
+        }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    private void CloseMenu(Menu menu)
     {
         menu.Close();
+        backButton.Close();
     }
 }

@@ -85,8 +85,16 @@ public class WeaponManager : MonoBehaviour
 
     private void CreateWeapon(WeaponInfo info)
     {
-        var weaponObject = Instantiate(new GameObject(), weaponsParent.transform).gameObject;
-        weaponObject.name = info.ItemName;
+        var weaponObject = new GameObject
+        {
+            name = info.ItemName,
+            transform =
+            {
+                parent = weaponsParent.transform,
+                localPosition = Vector3.zero
+            }
+        };
+        
         Type firingMode = info.GetFiringMode();
         var weapon = weaponObject.AddComponent(firingMode).GetComponent<Weapon>();
         weapon.SetWeaponInfo(info);
