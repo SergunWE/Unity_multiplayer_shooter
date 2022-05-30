@@ -15,6 +15,11 @@ public class DropdownScreenMode : MonoBehaviour
         _dropdown = GetComponent<TMP_Dropdown>();
     }
 
+    public void SetValue(int index)
+    {
+        GraphicSettings.SetFullScreenMode(index);
+    }
+    
     private void RefreshValue()
     {
         _dropdown.value = PlayerPrefs.GetInt(fullScreenKey, 1);
