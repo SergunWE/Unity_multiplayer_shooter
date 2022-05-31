@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
+    private const string NicknameKey = "Nickname";
+    
     public static Launcher Instance;
 
     [SerializeField] private TMP_InputField roomNameInputField;
@@ -44,7 +46,6 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         Debug.Log("Joined Lobby");
         MenuManager.Instance.OpenMenu("title");
-        PhotonNetwork.NickName = "Player" + Random.Range(0, 10000).ToString("00000");
     }
 
     public void CreateRoom()
@@ -53,7 +54,6 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             return;
         }
-
         PhotonNetwork.CreateRoom(roomNameInputField.text);
         MenuManager.Instance.OpenMenu("loading");
     }

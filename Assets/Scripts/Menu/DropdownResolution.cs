@@ -6,6 +6,7 @@ using UnityEngine;
 public class DropdownResolution : MonoBehaviour
 {
     private TMP_Dropdown _dropdown;
+
     private void Awake()
     {
         _dropdown = GetComponent<TMP_Dropdown>();
@@ -18,7 +19,6 @@ public class DropdownResolution : MonoBehaviour
 
     private void RefreshValues()
     {
-        Debug.Log("fefefe");
         _dropdown.ClearOptions();
         _dropdown.AddOptions(GraphicSettings.ResolutionNames);
 
@@ -27,8 +27,6 @@ public class DropdownResolution : MonoBehaviour
         {
             _dropdown.value = GraphicSettings.GetCurrentResolutionIndex();
         }
-        
-        
     }
 
     private void OnEnable()

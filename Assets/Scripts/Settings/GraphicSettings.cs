@@ -66,10 +66,6 @@ public static class GraphicSettings
     
     public static int GetCurrentResolutionIndex()
     {
-        // if (_isFull)
-        // {
-        //     return Resolutions.IndexOf(Screen.currentResolution);
-        // }
         var res = new Resolution
         {
             height = _height,

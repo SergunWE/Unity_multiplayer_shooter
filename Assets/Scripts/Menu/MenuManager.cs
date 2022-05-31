@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     
     [SerializeField] private Menu[] menus;
     [SerializeField] private Menu backButton;
+    [SerializeField] private Menu nickname;
 
     private void Awake()
     {
@@ -50,6 +51,14 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    public void ShowNickname()
+    {
+        if (!nickname.gameObject.activeSelf)
+        {
+            nickname.Open();
+        }
+    }
+
     public void QuitGame()
     {
         Application.Quit();
@@ -59,5 +68,6 @@ public class MenuManager : MonoBehaviour
     {
         menu.Close();
         backButton.Close();
+        nickname.Close();
     }
 }
