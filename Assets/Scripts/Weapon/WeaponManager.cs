@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using ExitGames.Client.Photon.StructWrapping;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class WeaponManager : MonoBehaviour
     
 
     private Weapon _currentWeapon;
+
+    [SerializeField] private PhotonView tpwPhotonView;
 
     private void Awake()
     {
@@ -57,6 +60,8 @@ public class WeaponManager : MonoBehaviour
         OnClipBulletUpdate();
         OnTotalBulletUpdate();
         WeaponNameUpdate();
+
+        tpwPhotonView.RPC("SwitchWeapon", RpcTarget.Others, index);
     }
 
     private void NextWeapon()
@@ -99,6 +104,8 @@ public class WeaponManager : MonoBehaviour
         var weapon = weaponObject.AddComponent(firingMode).GetComponent<Weapon>();
         weapon.SetWeaponInfo(info);
         _weapons.Add(weapon);
+        
+        tpwPhotonView.RPC("AddWeaponModel", RpcTarget.Others, info.ItemName);
     }
 
     private void InitializeWeapon()
