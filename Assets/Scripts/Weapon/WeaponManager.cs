@@ -20,10 +20,10 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private IntegerVariable totalBullet;
 
     [SerializeField] private StringVariable weaponName;
-    
+
     [SerializeField] private WeaponPool firstWeapon;
     [SerializeField] private WeaponPool secondWeapon;
-    
+
 
     private Weapon _currentWeapon;
 
@@ -54,14 +54,15 @@ public class WeaponManager : MonoBehaviour
         _currentWeaponIndex = index;
         _currentWeapon = _weapons[index];
         _currentWeapon.ShowWeapon();
-        
+
         onWeaponChange.Raise();
-        
+
         OnClipBulletUpdate();
         OnTotalBulletUpdate();
         WeaponNameUpdate();
 
-        tpwPhotonView.RPC("SwitchWeapon", RpcTarget.Others, index);
+        if (PhotonNetwork.IsConnected)
+            tpwPhotonView.RPC("SwitchWeapon", RpcTarget.Others, index);
     }
 
     private void NextWeapon()
@@ -99,13 +100,14 @@ public class WeaponManager : MonoBehaviour
                 localPosition = Vector3.zero
             }
         };
-        
+
         Type firingMode = info.GetFiringMode();
         var weapon = weaponObject.AddComponent(firingMode).GetComponent<Weapon>();
         weapon.SetWeaponInfo(info);
         _weapons.Add(weapon);
-        
-        tpwPhotonView.RPC("AddWeaponModel", RpcTarget.Others, info.ItemName);
+
+        if (PhotonNetwork.IsConnected)
+            tpwPhotonView.RPC("AddWeaponModel", RpcTarget.Others, info.ItemName);
     }
 
     private void InitializeWeapon()
@@ -163,7 +165,6 @@ public class WeaponManager : MonoBehaviour
                 _weapons[_currentWeaponIndex].UnUse();
             }
         }
-        
     }
 
     public void OnAlternateUse(InputAction.CallbackContext context)

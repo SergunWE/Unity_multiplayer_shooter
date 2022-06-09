@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 60
   distanceDamageCoefficient: 0
-  startInterval: 2
-  endInterval: 2
+  startInterval: 1
+  endInterval: 1
   numberBullets: 1

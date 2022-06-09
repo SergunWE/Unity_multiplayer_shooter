@@ -25,11 +25,12 @@ public class SensitivitySettingField : MonoBehaviour
 
     public void ChangeValue(string str)
     {
+        if(string.IsNullOrEmpty(str)) return;
         try
         {
             float prevValue = _value;
             _value = float.Parse(str);
-            if (_value <= 0)
+            if (_value < 0)
             {
                 _value = prevValue;
                 SetValueField();

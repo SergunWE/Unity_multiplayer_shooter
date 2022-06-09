@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SniperRifle_M82
   m_EditorClassIdentifier: 
   pulling: 2
-  shoot: 3
-  reload: 6
+  shoot: 2
+  reload: 4.5

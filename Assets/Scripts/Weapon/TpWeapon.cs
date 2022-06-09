@@ -32,14 +32,14 @@ public class TpWeapon : MonoBehaviourPunCallbacks
     [PunRPC]
     public void SwitchWeapon(int index)
     {
-        if(_photonView.IsMine || _weaponModels.Count == 0) return; 
+        if(_photonView == null && _photonView.IsMine || _weaponModels.Count == 0) return; 
         EquipWeapon(index);
     }
 
     [PunRPC]
     public void AddWeaponModel(string weaponName)
     {
-        if(_photonView.IsMine) return;
+        if(_photonView == null && _photonView.IsMine) return;
         var weaponObject = SetWeaponModel(weaponPool.GetWeaponByName(weaponName).Model.Model);
         _weaponModels.Add(weaponObject);
         _currentWeapon = _weaponModels[0];

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fafa2f5f011d048bda1468d6d35cfe, type: 3}
+  m_Name: AssaultRifle_Machinegun
+  m_EditorClassIdentifier: 
+  itemName: M249
+  damage: {fileID: 11400000, guid: 66861b918639a234dbbbe6e81b85b7aa, type: 2}
+  delays: {fileID: 11400000, guid: 36df99f7e8c4e204f93cb276594973b5, type: 2}
+  ammunition: {fileID: 11400000, guid: 0ea456edbebd88d4d99d8337de189a9d, type: 2}
+  model: {fileID: 11400000, guid: 708c53b81a005ec46a65643a21f697d2, type: 2}
+  type: 0
+  firingMode: 1

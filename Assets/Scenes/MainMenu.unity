@@ -6696,7 +6696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42912943bc0116e4ba1bb21f60297471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefsKey: 
+  playerPrefsKey: SensX
 --- !u!1 &1164968402
 GameObject:
   m_ObjectHideFlags: 0
@@ -9745,7 +9745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42912943bc0116e4ba1bb21f60297471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefsKey: 
+  playerPrefsKey: SensY
 --- !u!1 &1710119733
 GameObject:
   m_ObjectHideFlags: 0

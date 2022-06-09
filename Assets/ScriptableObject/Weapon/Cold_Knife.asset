@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fafa2f5f011d048bda1468d6d35cfe, type: 3}
+  m_Name: Cold_Knife
+  m_EditorClassIdentifier: 
+  itemName: Knife
+  damage: {fileID: 11400000, guid: d10bf40921db2184bb52b320856f2c9f, type: 2}
+  delays: {fileID: 11400000, guid: 20e0d2dcc8f5d7e44ac86a61d3829f8c, type: 2}
+  ammunition: {fileID: 11400000, guid: 428d22a0b6b1a7f4e9d89060cfd744eb, type: 2}
+  model: {fileID: 11400000, guid: 96eb155ec852d434cbaf64a1566170b1, type: 2}
+  type: 2
+  firingMode: 4

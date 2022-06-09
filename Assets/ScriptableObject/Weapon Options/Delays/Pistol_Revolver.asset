@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Pistol_Revolver
   m_EditorClassIdentifier: 
   pulling: 0.8
-  shoot: 0.12
-  reload: 1.7
+  shoot: 0.2
+  reload: 1.5
