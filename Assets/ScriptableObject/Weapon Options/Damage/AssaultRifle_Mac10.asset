@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssaultRifle_Mac10
   m_EditorClassIdentifier: 
   baseDamage: 10
-  distanceDamageCoefficient: 0.8
+  distanceDamageCoefficient: 0.6
   startInterval: 20
   endInterval: 60
   numberBullets: 1

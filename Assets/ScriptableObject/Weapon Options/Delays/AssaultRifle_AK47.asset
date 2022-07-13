@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AssaultRifle_AK47
   m_EditorClassIdentifier: 
   pulling: 1.2
-  shoot: 0.15
-  reload: 2
+  shoot: 0.12
+  reload: 1.9

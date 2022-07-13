@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AssaultRifle_Scorpion
   m_EditorClassIdentifier: 
   pulling: 0.8
-  shoot: 0.3
+  shoot: 0.15
   reload: 1.2

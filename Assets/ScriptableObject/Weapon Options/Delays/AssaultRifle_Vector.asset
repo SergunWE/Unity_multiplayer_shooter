@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulling: 0.9
   shoot: 0.03
-  reload: 1.2
+  reload: 1.3

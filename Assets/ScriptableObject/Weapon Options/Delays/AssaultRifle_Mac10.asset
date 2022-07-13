@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AssaultRifle_Mac10
   m_EditorClassIdentifier: 
   pulling: 1
-  shoot: 0.14
+  shoot: 0.13
   reload: 1.5
